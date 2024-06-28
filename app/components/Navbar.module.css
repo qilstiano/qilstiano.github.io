@@ -1,0 +1,15 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 10px 0;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
