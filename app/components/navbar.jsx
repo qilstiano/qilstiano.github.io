@@ -1,23 +1,18 @@
 'use client';
 import { useState } from 'react';
 import styles from './Navbar.module.css';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 function Navbar() {
-
   const router = useRouter();
 
   return (
     <div className={styles.navbar}>
-      <button onClick={() => router.push('/')}>My Work</button>
-      
-      <button onClick={() => router.push('/')}>My Process</button>
-      
-      <button onClick={() => router.push('/')}>About Me</button>
-      
-      <button onClick={() => router.push('/')}>Blog</button>
-
-      <button onClick={() => router.push('/')}>Contact</button>
+      <button className={styles.navButton} onClick={() => router.push('/')}>My Work</button>
+      <button className={styles.navButton} onClick={() => router.push('/process')}>My Process</button>
+      <button className={styles.navButton} onClick={() => router.push('/about')}>About Me</button>
+      <button className={styles.navButton} onClick={() => router.push('/blog')}>Blog</button>
+      <button className={styles.navButton} onClick={() => router.push('/contact')}>Contact Me</button>
     </div>
   );
 }

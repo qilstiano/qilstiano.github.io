@@ -6,8 +6,9 @@ import styles from './Home.module.css';
 export default function HomePage() {
   return (
     <div className={styles.defaultBackground}>
-      <Navbar/>
+      
       <div className={styles.containerOpener}>
+        <Navbar/>
         <div className={styles.largeLetters}>
         KEEP YOUR
         WEBSITE MINIMAL <br />
