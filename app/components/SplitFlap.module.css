@@ -1,0 +1,19 @@
+.splitFlapContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2rem;
+    gap: 0.5rem;
+  }
+  
+  .letterContainer {
+    perspective: 1000px;
+  }
+  
+  .flap-display {
+    display: inline-block;
+    background: #000; /* Ensure the background is black to match the display style */
+    color: #fff;
+    padding: 10px;
+  }
