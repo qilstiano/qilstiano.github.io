@@ -37,3 +37,6 @@ next-env.d.ts
 
 #dotenv
 .env
+.env.example
+.env.local
+.env.staging
