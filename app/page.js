@@ -38,45 +38,50 @@ export default function HomePage() {
   return (
     <div className={styles.defaultBackground}>
       <div className={styles.containerOpener}>
-        <img className={styles.grid1} src='./Grid-04.png' alt='Grid-04'/>
-        <img className={styles.shape28} src='./Shape-28.png' alt='Shape-28'/>
-
-        <Navbar />
-        <div className={styles.largeLetters}>
-          BRO KEEP YOUR WEBSITE SIMPLE <br />
-          SO THAT IT'S <br />
-          EASY TO <br />
-          READ AND <br />
-          UNDERSTAND <br />
-          WHAT EXACTLY YOU DO <br />
-          BUT WHAT IF THAT'S <br />
-          NOT WHAT I WANT? <br />
-          I DON'T KNOW... <br />
-          IT LOOKS TOO STERILE. <br />
-          LET'S GO FOR <br />
-          SOMETHING A BIT MORE <br />
-          EXPERIMENTAL LAH. <br />
-          SURE I GUESS BUT <br />
-          YOU SURE THAT IT <br />
-          WILL BE EASY TO READ? <br />
-          I DON'T KNOW BUT <br />
-          I DON'T CARE ALSO <br />
-          I JUST WANT TO MAKE A <br />
-          COOL LOOKING WEBSITE <br />
-          YOU ALWAYS TRY SO HARD <br />
-          TO BE DIFFERENT BRO <br />
-          YEAH OF COURSE LOL <br />
-          WHY WOULD I CHOOSE <br />
-          TO BE BORING? <br />
-          FOR GOD'S SAKE <br />
-          YOU HAVE A RENAISSANCE ERA <br />
-          PAINTING OF A RAVEN <br />
-          AS YOUR COVER IMAGE <br />
-          YEAH, WHAT ABOUT IT? <br />
-          I DON'T KNOW, MAN <br />
-          ARE YOU SURE <br />
-          ABOUT THIS? <br />
-        </div>
+      <img className={styles.grid1} src='./Grid-04.png' alt='Grid-04'/>
+      <img className={styles.shape28} src='./Shape-28.png' alt='Shape-28'/>
+        <video className={styles.backgroundVideo} autoPlay loop muted>
+          <source src="/bg1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <Navbar/>
+          <div className={styles.largeLetters}>
+            <span> 
+            BRO KEEP YOUR WEBSITE SIMPLE <br />
+            SO THAT IT'S <br />
+            EASY TO <br />
+            READ AND <br />
+            UNDERSTAND <br />
+            WHAT EXACTLY YOU DO <br />
+            BUT WHAT IF THAT'S <br />
+            NOT WHAT I WANT? <br />
+            I DON'T KNOW... <br />
+            IT LOOKS TOO STERILE. <br />
+            LET'S GO FOR <br />
+            SOMETHING A BIT MORE <br />
+            EXPERIMENTAL LAH. <br />
+            SURE I GUESS BUT <br />
+            YOU SURE THAT IT <br />
+            WILL BE EASY TO READ? <br />
+            I DON'T KNOW BUT <br />
+            I DON'T CARE ALSO <br />
+            I JUST WANT TO MAKE A <br />
+            COOL LOOKING WEBSITE <br />
+            YOU ALWAYS TRY SO HARD <br />
+            TO BE DIFFERENT BRO <br />
+            YEAH OF COURSE LOL <br />
+            WHY WOULD I CHOOSE <br />
+            TO BE BORING? <br />
+            FOR GOD'S SAKE <br />
+            YOU HAVE THIS HUGE ASS <br />
+            WALL OF FAKE MONOLOGUE <br />
+            ON THE LEFT OF YOUR LANDING PAGE <br />
+            YEAH, WHAT ABOUT IT? <br />
+            I DON'T KNOW, MAN <br />
+            ARE YOU SURE <br />
+            ABOUT THIS? <br />
+            </span>
+          </div>
         <div className={`${styles.randomText} ${styles.text1}`}>
           *NOTE THE APROSTROPHE, IT'S IMPORTANT. 
            BTW, SOMETHING ANNOYING ABOUT MY NAME. 
@@ -84,7 +89,7 @@ export default function HomePage() {
            INTO CERTAIN FORMS. I HATE THOSE.
         </div>
         <div className={`${styles.randomText} ${styles.text2}`}>
-          <h1> HELLO, <br /> MY NAME'S A'QIL* </h1>
+          <h1> <span className={styles.textInline}> HELLO, <br /> MY NAME'S A'QIL* </span> </h1>
           <img className={styles.underlineScribble} src='./LINE-3.png' alt='Underline Scribble' />
           <div className={styles.flapDisplayContainer}>
             <FlapDisplay
@@ -104,7 +109,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className={`${styles.randomText} ${styles.text3}`}>IS THIS CREATIVE ENOUGH <br /> FOR ME TO GET A JOB?</div>
-        {/* <div className={`${styles.randomText} ${styles.text4}`}>NOT SURE IF THE GOAL OF THIS WEBSITE IS TO BE A PORTFOLIO OR AN ATTEMPT TO BE ARTSY.</div> */}
+        <div className={`${styles.randomText} ${styles.text4}`}>EVERYTHING YOU SEE IN THE BACK WAS MADE BY ME.</div>
       </div>
     </div>
   );
