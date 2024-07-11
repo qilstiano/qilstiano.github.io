@@ -18,7 +18,7 @@
   justify-content: space-between;  /* Align items to the right */
   position: sticky;  /* Sticks to the top when you scroll */
   top: 0;
-  z-index: 1000;
+  z-index: 1002;
   margin-left: auto;  
   font-family: 'Helvetica-Neue-Roman', sans-serif;
 }
@@ -26,7 +26,7 @@
 .navButton {
   color: rgb(255, 255, 255);
   text-decoration: none;
-  border: 1px solid rgba(255, 255, 255, 0.514);  
+  border: 1px solid rgb(255, 255, 255);  
   transition: color 0.4s ease;  
   position: relative; 
   flex: 1;

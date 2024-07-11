@@ -1,6 +1,6 @@
 'use client';
-import Link from 'next/link';  // Import Link component from Next.js
-import styles from './Navbar.module.css';  // Assuming the CSS file is in the same folder
+import Link from 'next/link';  
+import styles from './Navbar.module.css';
 
 function Navbar() {
   return (
@@ -13,5 +13,4 @@ function Navbar() {
     </div>
   );
 }
-
 export default Navbar;

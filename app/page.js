@@ -1,7 +1,7 @@
 'use client';
 import { FlapDisplay, Presets } from 'react-split-flap-effect';
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar';
 import styles from './Home.module.css';
 
 export default function HomePage() {
