@@ -1,0 +1,22 @@
+@import url(https://fonts.googleapis.com/css?family=VT323);
+
+.simulationContainer {
+  margin: 0;
+  overflow: hidden;
+  font-family: "VT323", monospace;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 2rem;
+  height: 100vh;
+  background: rgb(0, 0, 0);
+  flex-direction: column;
+  z-index: 1;
+}
+
+#container {
+  display: grid;
+  color: #0f0;
+  flex: 1;
+  width: 100%;
+}

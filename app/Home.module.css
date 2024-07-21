@@ -22,6 +22,7 @@
   }
 }
 
+
 .containerOpener {
   position: relative;
   width: 100vw;
@@ -56,7 +57,7 @@
   padding: 10px 4px;
   position: left;
   left: 10%;
-  top: 40%;
+  top: 30%;
   font-size: 30px;
   color: white;
   font-weight: bolder;
@@ -78,16 +79,16 @@
 
 .text1 { 
   top: 22%; 
-  left: 87%; 
+  left: 85%; 
   rotate: 270deg;
-  font-size: x-small;
+  font-size: xx-small;
   font-family: Helvetica-Neue-Light, sans-serif;
   text-overflow: clip;
 }
 
 .text2 { 
-  top: 35%; 
-  right: 10%; 
+  top: 20%; 
+  right: 12%; 
   font-size: 80px; 
   display: flex;
   flex-direction: column;
@@ -100,8 +101,6 @@
   top: 80%; 
   left: 76%; 
   text-orientation: sideways-right;
-  
-
 }
 
 .text4 { 
@@ -125,10 +124,7 @@
   justify-content: space-between;
   z-index: 10;
   font-size: 45px;
-  margin-top: -10px;
-  margin-bottom: -10px;
   font-family: 'Helvetica-Neue-Light', sans-serif;
-
 }
 
 .underlineScribble {

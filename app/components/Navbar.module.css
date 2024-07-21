@@ -15,8 +15,9 @@
 
 .navbar {
   display: flex;
-  justify-content: space-between;  /* Align items to the right */
-  position: sticky;  /* Sticks to the top when you scroll */
+  justify-content: space-between;  
+  max-width: 100vw;
+  position: sticky;  
   top: 0;
   z-index: 1002;
   margin-left: auto;  

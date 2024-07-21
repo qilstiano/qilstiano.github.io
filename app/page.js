@@ -2,6 +2,8 @@
 import { FlapDisplay, Presets } from 'react-split-flap-effect';
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
+import AboutMe from './components/AboutMe';
+import Simulation from './components/Simluation';
 import styles from './Home.module.css';
 
 export default function HomePage() {
@@ -108,9 +110,10 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <div className={`${styles.randomText} ${styles.text3}`}>IS THIS CREATIVE ENOUGH <br /> FOR ME TO GET A JOB?</div>
-        <div className={`${styles.randomText} ${styles.text4}`}>EVERYTHING YOU SEE IN THE BACK WAS MADE BY ME.</div>
+        {/* <div className={`${styles.randomText} ${styles.text3}`}>IS THIS CREATIVE ENOUGH <br /> FOR ME TO GET A JOB?</div>
+        <div className={`${styles.randomText} ${styles.text4}`}>EVERYTHING YOU SEE IN THE BACK WAS MADE BY ME.</div> */}
       </div>
+      <Simulation/>
     </div>
   );
 }
