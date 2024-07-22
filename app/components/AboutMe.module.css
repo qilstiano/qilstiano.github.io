@@ -1,8 +1,20 @@
 .aboutMeContainer {
   position: relative;
-  color: white;
-  padding: 20px;
-  z-index: 10;  
+  color: rgb(0, 0, 0); 
+}
+
+.asciiArt {
+  margin-left: 5rem;
+  margin-top:5rem;
+  white-space: pre;
+  position: absolute;
+  background-image:  radial-gradient(ellipse farthest-corner, #0000000c 20%, #00000077 80%), url('/aboutMeBacking.jpg');
+  background-size: cover;
+  color: rgb(255, 255, 255);
+  font-weight: bolder;
+  font-size: 1.4vh;
+  padding: 2rem;
+  z-index: 1001;
 }
 
 .content {
@@ -16,6 +28,7 @@
   border-radius: 50%;
   margin-right: 20px;
 }
+
 
 .techstack {
   margin-top: 20px;

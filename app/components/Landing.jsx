@@ -1,12 +1,9 @@
 'use client';
 import { FlapDisplay, Presets } from 'react-split-flap-effect';
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/navbar';
-import AboutMe from './components/AboutMe';
-import Simulation from './components/Simluation';
-import styles from './Home.module.css';
+import styles from './Landing.module.css';
 
-export default function HomePage() {
+export default function Landing() {
   const textArray = ['COMPUTER SCIENCE', 'GRAPHIC', 'GAME PROGRAMMING', '3D ARTIST', 'FULL-STACK'];
   const textArray1 = ['SOPHOMORE @ NUS', 'DESIGNER', 'HOBBYIST', '', 'WEB-DEV'];
   const [currentText, setCurrentText] = useState(textArray[0]);
@@ -38,9 +35,7 @@ export default function HomePage() {
   }, [textArray, textArray1, interval]);
 
   return (
-    
     <div className={styles.defaultBackground}>
-      <Navbar/>
       <div className={styles.containerOpener}>
       <img className={styles.grid1} src='./Grid-04.png' alt='Grid-04'/>
       <img className={styles.shape28} src='./Shape-28.png' alt='Shape-28'/>
@@ -114,7 +109,6 @@ export default function HomePage() {
         {/* <div className={`${styles.randomText} ${styles.text3}`}>IS THIS CREATIVE ENOUGH <br /> FOR ME TO GET A JOB?</div>
         <div className={`${styles.randomText} ${styles.text4}`}>EVERYTHING YOU SEE IN THE BACK WAS MADE BY ME.</div> */}
       </div>
-        <AboutMe/>        
     </div>
-  );
+  )
 }

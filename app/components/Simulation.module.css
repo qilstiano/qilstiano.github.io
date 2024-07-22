@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=VT323);
 
 .simulationContainer {
+  mask-image: linear-gradient(to top, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
   margin: 0;
   overflow: hidden;
   font-family: "VT323", monospace;
@@ -12,6 +13,7 @@
   background: rgb(0, 0, 0);
   flex-direction: column;
   z-index: 1;
+
 }
 
 #container {
