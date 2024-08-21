@@ -1,20 +1,25 @@
 .aboutMeContainer {
   position: relative;
   color: rgb(0, 0, 0); 
+  height:120vh;
 }
 
 .asciiArt {
   margin-left: 5rem;
-  margin-top:5rem;
+  margin-top: 1vh;
   white-space: pre;
   position: absolute;
-  background-image:  radial-gradient(ellipse farthest-corner, #0000000c 20%, #00000077 80%), url('/aboutMeBacking.jpg');
+  background-image: radial-gradient(ellipse farthest-corner, #0000000c 20%, #00000077 80%), url('/aboutMeBacking.jpg');
   background-size: cover;
   color: rgb(255, 255, 255);
   font-weight: bolder;
   font-size: 1.4vh;
-  padding: 2rem;
-  z-index: 1001;
+  padding: 1rem;
+  z-index: 1;
+}
+
+.simulationContainer {
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
 }
 
 .content {
