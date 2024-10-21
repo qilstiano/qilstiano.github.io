@@ -7,8 +7,8 @@ import Simulation from './components/Simluation';
 import styles from './Home.module.css';
 
 export default function HomePage() {
-  const textArray = ['COMPUTER SCIENCE', 'GRAPHIC', 'GAME PROGRAMMING', '3D ARTIST', 'FULL-STACK'];
-  const textArray1 = ['SOPHOMORE @ NUS', 'DESIGNER', 'HOBBYIST', '', 'WEB-DEV'];
+  const textArray = ['COMPUTER SCIENCE', 'GAME PROGRAMMING', 'FULL-STACK', 'CYBERSECURITY', 'INTEREST IN', 'GRAPHIC', '3D ARTIST'];
+  const textArray1 = ['SOPHOMORE @ NUS', 'HOBBYIST', 'WEB-DEV', 'ENTHUSIAST', 'AI & ML', 'DESIGNER', ''];
   const [currentText, setCurrentText] = useState(textArray[0]);
   const [currentText1, setCurrentText1] = useState(textArray1[0]);
   const interval = 5000; // 5 seconds
