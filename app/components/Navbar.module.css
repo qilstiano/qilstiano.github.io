@@ -1,37 +1,29 @@
-@font-face {
-  font-family: 'Helvetica-Neue-Light'; /*a name to be used later*/
-  src: url('/fonts/HelveticaNeueLight.otf'); /*URL to font*/
-}
-
-@font-face {
-  font-family: 'Helvetica-Neue-Roman'; /*a name to be used later*/
-  src: url('/fonts/HelveticaNeueRoman.otf'); /*URL to font*/
-}
-
-@font-face {
-  font-family: 'Helvetica-Neue-Med'; /*a name to be used later*/
-  src: url('/fonts/HelveticaNeueMedium.otf'); /*URL to font*/
-}
-
+/* Existing styles for the navbar */
 .navbar {
   display: flex;
-  justify-content: space-between;  
+  justify-content: space-between;
   max-width: 100vw;
-  position: sticky;  
+  position: sticky;
   top: 0;
   z-index: 1001;
-  margin-left: auto;  
+  margin-left: auto;
   font-family: 'Helvetica-Neue-Roman', sans-serif;
   background-size: cover;
+  transition: background-color 0.3s ease;
+}
 
+/* New class for the navbar when scrolled */
+.scrolled {
+  background-color: rgba(0, 0, 0, 0.5); /* Adjust color to your needs */
 }
 
 .navButton {
   color: rgb(255, 255, 255);
+  font-weight: bold;
   text-decoration: none;
-  border: 1px solid rgb(255, 255, 255);  
-  transition: color 0.4s ease;  
-  position: relative; 
+  border: 1px solid rgb(255, 255, 255);
+  transition: color 0.4s ease;
+  position: relative;
   flex: 1;
   text-align: center;
   transition: background-color 1s ease-in-out color .15s ease-in-out;
