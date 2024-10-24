@@ -15,3 +15,12 @@
     color: #fff;
     padding: 10px;
   }
+
+/*mobile portrait (vertical screen) */
+@media only screen and (max-width: 650px) {
+  .splitFlapContainer {
+    justify-content: left;
+    align-items: left;
+    font-family: 'Courier New', Courier, monospace;
+  }
+}

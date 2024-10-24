@@ -90,28 +90,29 @@ export default function HomePage() {
            ON SOME WEBSITES YOU CAN'T TYPE THE APROSTROPHE 
            INTO CERTAIN FORMS. I HATE THOSE.
         </div>
+        
         <div className={`${styles.randomText} ${styles.text2}`}>
           <h1> <span className={styles.textInline}> HELLO, <br /> MY NAME'S A'QIL* </span> </h1>
           <img className={styles.underlineScribble} src='./LINE-3.png' alt='Underline Scribble' />
-          <div className={styles.flapDisplayContainer}>
-            <FlapDisplay
-              chars={Presets.ALPHANUM + ",!'()@"}
-              length={currentText.length}
-              value={currentText}
-              className={'light'}
-            />
-          </div>
-          <div className={styles.flapDisplayContainer}>
-            <FlapDisplay
-              chars={Presets.ALPHANUM + ",!'()@"}
-              length={currentText1.length}
-              value={currentText1}
-              hinge={true}
-            />
+          <div className={styles.flapDisplayMaster}>
+            <div className={styles.flapDisplayContainer}>
+              <FlapDisplay
+                chars={Presets.ALPHANUM + ",!'()@"}
+                length={currentText.length}
+                value={currentText}
+                className={'light'}
+              />
+            </div>
+            <div className={styles.flapDisplayContainer}>
+              <FlapDisplay
+                chars={Presets.ALPHANUM + ",!'()@"}
+                length={currentText1.length}
+                value={currentText1}
+                hinge={true}
+              />
+            </div>
           </div>
         </div>
-        {/* <div className={`${styles.randomText} ${styles.text3}`}>IS THIS CREATIVE ENOUGH <br /> FOR ME TO GET A JOB?</div>
-        <div className={`${styles.randomText} ${styles.text4}`}>EVERYTHING YOU SEE IN THE BACK WAS MADE BY ME.</div> */}
       </div>
         <AboutMe/>        
     </div>
