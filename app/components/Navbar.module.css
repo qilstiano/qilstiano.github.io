@@ -35,6 +35,6 @@
 /*mobile portrait (vertical screen) */
 @media only screen and (max-width: 650px) {
   .navButton{
-    font-size: 2vh;
+    font-size: 3vw;
   }
 }
