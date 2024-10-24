@@ -58,7 +58,7 @@
   position: left;
   left: 10%;
   top: 30%;
-  font-size: 3vh;
+  font-size: 2.5vw;
   color: white;
   font-weight: bolder;
   line-height: 85%;
@@ -67,13 +67,12 @@
 }
 
 .textInline {
-  background-color: #00000057;
+  background-color: #1f1e1dba;
 }
 
 .randomText {
   position: absolute;
   color: white;
-  font-size: 20px;
   animation: fadeIn 1s ease-in-out;
 }
 
@@ -81,7 +80,7 @@
   top: 22%; 
   left: 85%; 
   rotate: 270deg;
-  font-size: xx-small;
+  font-size: 1vw;
   font-family: Helvetica-Neue-Light, sans-serif;
   text-overflow: clip;
 }
@@ -89,7 +88,7 @@
 .text2 { 
   top: 20%; 
   right: 12%; 
-  font-size: 80px; 
+  font-size: 8.5vw; 
   display: flex;
   flex-direction: column;
   align-items: flex-end; 
@@ -123,14 +122,14 @@
   display: flex;
   justify-content: space-between;
   z-index: 10;
-  font-size: 45px;
+  font-size: 4vh;
   font-family: 'Helvetica-Neue-Light', sans-serif;
 }
 
 .underlineScribble {
   position: block;
-  width: 13%; /* Adjust the width as needed */
-  margin: -15px 20px 10px; /* Adjust the margin to position it correctly */
+  width: 13%; 
+  margin: -15px 20px 10px; 
   filter: invert();
 }
 
@@ -146,9 +145,8 @@
 
 .grid1 {
   position: absolute;
-  width: 30%; 
+  width: 100%; 
   height: auto;
-  top: 20px;
   right: 0;
   z-index: 0; 
   object-fit: cover; 

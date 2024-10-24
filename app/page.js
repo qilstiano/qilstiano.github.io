@@ -3,12 +3,11 @@ import { FlapDisplay, Presets } from 'react-split-flap-effect';
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
 import AboutMe from './components/AboutMe';
-import Simulation from './components/Simluation';
 import styles from './Home.module.css';
 
 export default function HomePage() {
-  const textArray = ['COMPUTER SCIENCE', 'FULL-STACK', 'CYBERSECURITY', 'ASPIRING','GAME PROGRAMMING', 'GRAPHIC', '3D ARTIST'];
-  const textArray1 = ['SOPHOMORE @ NUS', 'WEB-DEV', 'ENTHUSIAST', 'AI/ML ENGINEER', 'HOBBYIST', 'DESIGNER', ''];
+  const textArray = ['COMPUTER_SCIENCE', 'CHIEF_TECHNOLOGY_OFFICER', 'ASPIRING', 'UPCOMING','FULL STACK', 'GAMEDEV', '3D ARTIST', 'HUMAN'];
+  const textArray1 = ['SOPHOMORE_@_NUS', '@_JALAN_JOURNEY','OFFSEC ENGINEER', 'AI/ML ENGINEER', 'WEB DEV', 'HOBBYIST', '', ''];
   const [currentText, setCurrentText] = useState(textArray[0]);
   const [currentText1, setCurrentText1] = useState(textArray1[0]);
   const interval = 5000; // 5 seconds
