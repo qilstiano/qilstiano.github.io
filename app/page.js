@@ -6,8 +6,8 @@ import AboutMe from './components/AboutMe';
 import styles from './Home.module.css';
 
 export default function HomePage() {
-  const textArray = ['COMPUTER_SCIENCE', 'CHIEF_TECHNOLOGY_OFFICER', 'ASPIRING', 'UPCOMING','FULL STACK', 'GAMEDEV', '3D ARTIST', 'HUMAN'];
-  const textArray1 = ['SOPHOMORE_@_NUS', '@_JALAN_JOURNEY','OFFSEC ENGINEER', 'AI/ML ENGINEER', 'WEB DEV', 'HOBBYIST', '', ''];
+  const textArray = ['COMPUTER_SCIENCE', 'CHIEF_TECHNOLOGY_OFFICER', 'ASPIRING', 'UPCOMING','FULL STACK', 'GAMEDEV', '3D ARTIST', 'CAT'];
+  const textArray1 = ['SOPHOMORE_@_NUS', '@_JALAN_JOURNEY','OFFSEC ENGINEER', 'AI/ML ENGINEER', 'WEB DEV', 'HOBBYIST', '', 'GUY'];
   const [currentText, setCurrentText] = useState(textArray[0]);
   const [currentText1, setCurrentText1] = useState(textArray1[0]);
   const interval = 5000; // 5 seconds
