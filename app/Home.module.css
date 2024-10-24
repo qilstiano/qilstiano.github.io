@@ -167,7 +167,7 @@
   .largeLetters {
     top: 30%;
     font-size: 2rem;
-    color: rgba(255, 45, 25, 20);
+    color: rgba(255, 45, 25, 1);
     font-weight: bolder;
     line-height: 85%;
     mix-blend-mode: difference;
