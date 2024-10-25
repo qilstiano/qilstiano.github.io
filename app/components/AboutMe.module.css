@@ -5,15 +5,15 @@
 }
 
 .asciiArt {
-  margin-left: 5rem;
-  margin-top: 1vh;
+  left:2%;
+  top:20%;
   white-space: pre;
   position: absolute;
-  background-image: radial-gradient(ellipse farthest-corner, #0000000c 20%, #00000077 80%), url('/aboutMeBacking.jpg');
+  /* background-image: radial-gradient(ellipse farthest-corner, #0000000c 20%, #00000077 80%), url('/aboutMeBacking.jpg'); */
   background-size: cover;
   color: rgb(255, 255, 255);
   font-weight: bolder;
-  font-size: 0.8vw;
+  font-size: 2vw;
   padding: 1rem;
   z-index: 1;
 }
@@ -53,4 +53,11 @@
 
 .interests {
   margin-top: 20px;
+}
+
+/*mobile portrait (vertical screen) */
+@media only screen and (max-width: 650px) {
+  .asciiArt {
+
+  }
 }

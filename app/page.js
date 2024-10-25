@@ -43,7 +43,7 @@ export default function HomePage() {
       <div className={styles.containerOpener}>
       <img className={styles.grid1} src='./Grid-04.png' alt='Grid-04'/>
       <img className={styles.shape28} src='./Shape-28.png' alt='Shape-28'/>
-        <video className={styles.backgroundVideo} autoPlay loop muted>
+        <video className={styles.backgroundVideo} autoplay loop muted>
           <source src="/bg1.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>

@@ -26,7 +26,7 @@
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: url('/backgroundImage-studio.jpg');
+  background: black;
   background-position-y: -120px;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -68,7 +68,7 @@
 }
 
 .randomText {
-  position: absolute;
+  position: fixed;
   color: rgb(255, 255, 255);
   animation: fadeIn 1s ease-in-out;
 }
@@ -83,6 +83,7 @@
 }
 
 .text2 { 
+  position: fixed;
   top: 5vh; 
   right: 12%; 
   font-size: 8.5vw; 
@@ -182,7 +183,7 @@
   }
   
   .randomText {
-    position: absolute;
+    position: fixed;
     color: rgb(255, 255, 255);
     animation: fadeIn 1s ease-in-out;
     align-items: left;
