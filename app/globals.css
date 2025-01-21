@@ -8,6 +8,51 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/fonts/AppleGaramond.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Cloister Black';
+  src: url('/fonts/CloisterBlack.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Countdown Regular';
+  src: url('/fonts/Countdown Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Light';
+  src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Medium';
+  src: url('/fonts/HelveticaNeueMedium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Helvetica Neue Roman';
+  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Jacquard12';
+  src: url('/fonts/Jacquard12-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Lordish';
+  src: url('/fonts/Lordish.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Nirvana';
+  src: url('/fonts/NIRVANA.TTF') format('truetype');
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

@@ -12,6 +12,18 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      fontFamily: {
+        garamond: ['Apple Garamond', 'serif'],
+        cloister: ['Cloister Black', 'serif'],
+        countdown: ['Countdown Regular', 'sans-serif'],
+        helveticaLight: ['Helvetica Neue Light', 'sans-serif'],
+        helveticaMedium: ['Helvetica Neue Medium', 'sans-serif'],
+        helveticaRoman: ['Helvetica Neue Roman', 'sans-serif'],
+        jacquard: ['Jacquard12', 'cursive'],
+        lordish: ['Lordish', 'serif'],
+        nirvana: ['Nirvana', 'sans-serif'],
+      },
     },
   },
   plugins: [],
