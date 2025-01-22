@@ -23,6 +23,9 @@ module.exports = {
         jacquard: ['Jacquard12', 'cursive'],
         lordish: ['Lordish', 'serif'],
         nirvana: ['Nirvana', 'sans-serif'],
+        kregas: ['Kregas', 'serif'],
+        dirtyline: ['Dirtyline', 'serif'],
+        gotha: ['Gotha', 'serif']
       },
     },
   },
