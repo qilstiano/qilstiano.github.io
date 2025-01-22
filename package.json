@@ -12,12 +12,12 @@
     "axios": "^1.7.2",
     "ci": "^2.3.0",
     "dotenv": "^16.4.5",
+    "gsap": "^3.12.7",
     "i": "^0.3.7",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",
-    "react-responsive-carousel": "^3.2.23",
-    "react-split-flap-effect": "^1.0.0"
+    "react-responsive-carousel": "^3.2.23"
   },
   "devDependencies": {
     "postcss": "^8",
