@@ -47,7 +47,7 @@ const LoadingScreen = () => {
       <div className={`fixed flex flex-col items-center justify-center h-8 py-9 w-full text-center text-white text-[1vw] tracking-tight font-light font-garamond z-[100] transition-opacity duration-150 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           Websites take a while to load sometimes, you know. Just be patient.
         </div>
-      <div className={`fixed flex flex-col items-center justify-center h-screen w-full text-center text-white text-[17vw] tracking-wide font-light font-garamond z-[100] transition-opacity duration-150 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`fixed flex flex-col items-center lowercase justify-center h-screen w-full text-center text-white text-[16vw]  font-light font-grotesk z-[100] transition-opacity duration-150 ease-in-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         {currentWord}
       </div>
 

@@ -62,8 +62,7 @@ export default function Home() {
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      {/* <LoadingScreen/> */}
-      {/* Grid Background */}
+      <LoadingScreen/>
       <div id="background" className="absolute inset-0 z-0 grid-background">
         {Array.from({ length: gridSize.rows * gridSize.cols }).map((_, index) => (
           <div key={index} className="grid-cell"></div>
@@ -87,12 +86,34 @@ export default function Home() {
         <Navbar />
         <div className="absolute inset-0 text-white flex flex-col items-start my-4">
           <div className="px-4 rounded-md font-grotesk">
-            <p className="text-[12vw]">muhammad-a'qil*</p>
-            <p className="text-2xl font-helveticaMedium"> PORTFOLIO I.</p>
+            <p className="text-[12vw] ">muhammad-a'qil*</p>
+            <p className="text-md font-helveticaMedium"> *yup my name has an aprostrophe</p>
+            <p className="text-md font-helveticaMedium"> PORTFOLIO I.</p>
           </div>
-          <div className="max-w-5xl px-2 py-3 text-5xl font-helveticaMedium my-9">
-            <span className="font-garamond hover:gradient-effect hover:line-through">1.</span> SOPHOMORE @ NUS COMPUTER SCIENCE{' '}
-            <span className="font-garamond hover:gradient-effect hover:line-through">2.</span> CHIEF TECHNOLOGY OFFICER @ JALAN JOURNEY
+          <div className="max-w-[100%] px-2 py-3 text-4xl font-helveticaMedium my-9">
+          <span>
+            <span className=" hover:gradient-effect ">
+              1. SOPHOMORE @ NUS COMPUTER SCIENCE
+            </span>{' '}
+            <span className=" hover:gradient-effect ">
+              2. CHIEF TECHNOLOGY OFFICER @ JALAN JOURNEY
+            </span>{' '}
+            <span className=" hover:gradient-effect ">
+              3. ASPIRING RED TEAM/PENTESTING SPECIALIST
+            </span>{' '}
+            <span className=" hover:gradient-effect ">
+              4. FULLSTACK DEVELOPER (WEB)
+            </span>{' '}
+            <span className=" hover:gradient-effect ">
+              5. ASPIRING AI/ML ENGINEER
+            </span>{' '}
+            <span className="hover:gradient-effect ">
+              6. HOBBYIST GRAPHIC DESIGNER
+            </span>{' '}
+            <span className=" hover:gradient-effect ">
+              7. CAT LOVER
+            </span>
+          </span>
           </div>
         </div>
       </div>

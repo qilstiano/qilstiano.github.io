@@ -10,6 +10,7 @@
   font-family: 'Helvetica-Neue-Roman', sans-serif;
   background-size: cover;
   transition: background-color 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
 .scrolled {
@@ -28,7 +29,7 @@
 }
 
 .navButton:hover {
-  background-color: #ff5e00;
+  background-color: #95ff00;
   color: black;
 }
 
