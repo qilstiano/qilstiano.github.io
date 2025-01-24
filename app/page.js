@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from './components/navbar';
 import LoadingScreen from './components/LoadingScreen';
+import './globals.css';
 
 export default function Home() {
   const [gridSize, setGridSize] = useState({ rows: 0, cols: 0 });
