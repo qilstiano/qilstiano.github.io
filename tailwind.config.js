@@ -25,7 +25,8 @@ module.exports = {
         nirvana: ['Nirvana', 'sans-serif'],
         kregas: ['Kregas', 'serif'],
         dirtyline: ['Dirtyline', 'serif'],
-        gotha: ['Gotha', 'serif']
+        gotha: ['Gotha', 'serif'],
+        grotesk: ['Neue Haas Grotesk', 'serif']
       },
     },
   },
