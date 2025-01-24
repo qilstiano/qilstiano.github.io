@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-import 'tailwindcss/tailwind.css';
 
 const LoadingScreen = () => {
   const words = ["WELCOME", "TO", "THE", "BEST", "PORTFOLIO", "EVER", "!!!!!!"];
