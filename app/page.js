@@ -1,11 +1,41 @@
-'use client'
+'use client';
 import { useEffect, useState } from 'react';
 import Navbar from './components/navbar';
 import LoadingScreen from './components/LoadingScreen';
+import LoopingWords from './components/LoopingWords';
 import './globals.css';
 
 export default function Home() {
   const [gridSize, setGridSize] = useState({ rows: 0, cols: 0 });
+  const targetName = "muhammad-a'qil*";
+  const [displayName, setDisplayName] = useState('');
+  const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-[]{}";
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 }); // Track cursor position
+
+  // Name shuffling effect with a 5-second delay
+  useEffect(() => {
+    const delay = 3500; // 5-second delay
+    const timeout = setTimeout(() => {
+      let currentIndex = 0;
+      const interval = setInterval(() => {
+        if (currentIndex < targetName.length) {
+          setDisplayName((prev) =>
+            targetName
+              .split('')
+              .map((char, idx) => (idx <= currentIndex ? char : characters[Math.floor(Math.random() * characters.length)]))
+              .join('')
+          );
+          currentIndex++;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100); // Speed of shuffling effect
+
+      return () => clearInterval(interval);
+    }, delay);
+
+    return () => clearTimeout(timeout); // Cleanup timeout on unmount
+  }, []);
 
   // Calculate grid size based on window dimensions
   useEffect(() => {
@@ -61,9 +91,22 @@ export default function Home() {
     };
   }, [gridSize]); // Run this effect whenever gridSize changes
 
+  // Track cursor position
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setCursorPosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <LoadingScreen/>
+    <div className="relative w-full h-screen overflow-auto">
+      <LoadingScreen />
       <div id="background" className="absolute inset-0 z-0 grid-background">
         {Array.from({ length: gridSize.rows * gridSize.cols }).map((_, index) => (
           <div key={index} className="grid-cell"></div>
@@ -75,8 +118,8 @@ export default function Home() {
         className="absolute inset-0 z-15 gradient-overlay"
         style={{
           background: 'linear-gradient(to right, black 40%, transparent)',
-          backdropFilter: 'blur(2px)', 
-          WebkitBackdropFilter: 'blur(2px)', 
+          backdropFilter: 'blur(2px)',
+          WebkitBackdropFilter: 'blur(2px)',
         }}
       ></div>
 
@@ -87,35 +130,11 @@ export default function Home() {
         <Navbar />
         <div className="absolute inset-0 text-white flex flex-col items-start my-4">
           <div className="px-4 rounded-md font-grotesk">
-            <p className="text-[12vw] ">muhammad-a'qil*</p>
-            <p className="text-md font-helveticaMedium"> *yup my name has an aprostrophe</p>
+            <p className="text-[9vw]">{displayName || targetName}</p>
+            <p className="text-md font-helveticaMedium"> *yup my name has an apostrophe</p>
             <p className="text-md font-helveticaMedium"> PORTFOLIO I.</p>
           </div>
-          <div className="max-w-[100%] px-2 py-3 text-4xl font-helveticaMedium my-9">
-          <span>
-            <span className=" hover:gradient-effect ">
-              1. SOPHOMORE @ NUS COMPUTER SCIENCE
-            </span>{' '}
-            <span className=" hover:gradient-effect ">
-              2. CHIEF TECHNOLOGY OFFICER @ JALAN JOURNEY
-            </span>{' '}
-            <span className=" hover:gradient-effect ">
-              3. ASPIRING RED TEAM/PENTESTING SPECIALIST
-            </span>{' '}
-            <span className=" hover:gradient-effect ">
-              4. FULLSTACK DEVELOPER (WEB)
-            </span>{' '}
-            <span className=" hover:gradient-effect ">
-              5. ASPIRING AI/ML ENGINEER
-            </span>{' '}
-            <span className="hover:gradient-effect ">
-              6. HOBBYIST GRAPHIC DESIGNER
-            </span>{' '}
-            <span className=" hover:gradient-effect ">
-              7. CAT LOVER
-            </span>
-          </span>
-          </div>
+          <LoopingWords />
         </div>
       </div>
     </div>
