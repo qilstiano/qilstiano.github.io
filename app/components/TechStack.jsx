@@ -24,7 +24,7 @@ const TechStackCarousel = () => {
   // Categories for the tech stack
   const categories = [
     {
-      label: 'frontend',
+      label: 'Frontend',
       tools: [
         { name: 'Next.js', icon: <SiNextdotjs className="w-6 h-6" /> },
         { name: 'React', icon: <SiReact className="w-6 h-6" /> },
@@ -34,7 +34,7 @@ const TechStackCarousel = () => {
       ],
     },
     {
-      label: 'backend',
+      label: 'Backend',
       tools: [
         { name: 'Java', icon: <FaJava className="w-6 h-6" /> },
         { name: 'C#', icon: <TbBrandCSharp className="w-6 h-6" /> },
@@ -43,7 +43,7 @@ const TechStackCarousel = () => {
       ],
     },
     {
-      label: 'ai/ml',
+      label: 'AI/ML',
       tools: [
         { name: 'TensorFlow', icon: <SiTensorflow className="w-6 h-6" /> },
         { name: 'Python', icon: <SiPython className="w-6 h-6" /> },
@@ -52,7 +52,7 @@ const TechStackCarousel = () => {
       ],
     },
     {
-      label: 'design/3D',
+      label: 'Design/3D',
       tools: [
         { name: 'Blender', icon: <TbBrandBlender className="w-6 h-6" /> },
         { name: 'Figma', icon: <IoLogoFigma className="w-6 h-6" /> },
@@ -106,7 +106,7 @@ const TechStackCarousel = () => {
 
   return (
     <div
-      className="flex-1 bg-black/10 backdrop-blur-xl rounded-lg p-6 border border-white/20 relative overflow-hidden"
+      className="flex-1 bg-black/10 backdrop-blur-xl rounded-lg p-4 border border-white/20 relative overflow-hidden"
       onMouseMove={handleMouseMove}
     >
       {/* Carousel Navigation Arrows */}
@@ -127,7 +127,7 @@ const TechStackCarousel = () => {
       <div
         onMouseEnter={handleHover}
         onMouseLeave={handleMouseLeave}
-        className="relative"
+        className="relative text-2xl"
       >
         my tecc stacc
       </div>
@@ -151,8 +151,8 @@ const TechStackCarousel = () => {
       )}
 
       <div className="text-start">
-        <p className="text-lg font-bold mb-4">{currentCategory.label}</p>
-        <div className="flex flex-wrap justify-center gap-4">
+        <p className="text-xl font-bold lowercase mb-4">{currentCategory.label}</p>
+        <div className="flex flex-wrap justify-center gap-2">
           {currentCategory.tools.map((tool, index) => (
             <div
               key={index}
