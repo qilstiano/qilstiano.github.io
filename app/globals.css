@@ -127,53 +127,6 @@
   width: 100%;
 }
 
-/* Gradient Hover Effect */
-.hover\:gradient-effect {
-  position: relative;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
-
-/* Prism Gradient Hover Effect */
-.hover\:gradient-effect::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 0, 0, 0.8),    /* Red */
-    rgba(255, 165, 0, 0.8),  /* Orange */
-    rgba(255, 255, 0, 0.8),  /* Yellow */
-    rgba(75, 0, 130, 0.8),   /* Indigo */
-    rgba(238, 130, 238, 0.8) /* Violet */
-    
-  );
-  background-size: 400% 100%; /* Larger background size for smooth animation */
-  z-index: -1;
-  transition: width 0.3s ease;
-}
-
-.hover\:gradient-effect:hover::before {
-  width: 100%; /* Expand the gradient on hover */
-  animation: prism-glow 15s linear infinite; /* Add animation for shifting colors */
-}
-
-/* Prism Glow Animation */
-@keyframes prism-glow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 /* ------- Looping Words ------- */
 .cloneable {
   padding: var(--container-padding);
