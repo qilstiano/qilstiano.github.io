@@ -128,7 +128,7 @@ export default function Home() {
         <div className="absolute inset-0 text-white flex flex-col items-start my-4">
           <div className="px-4 rounded-md font-grotesk">
             <p className="text-[10vw] sm:text-[9vw] md:text-[10vw]">{displayName || targetName}</p>
-            <p className="text-[1vw] sm:text-[1vw] md:text-[2vw] font-helveticaMedium"> *yup my name has an apostrophe</p>
+            <p className="text-[1vw] sm:text-[1vw] md:text-[2vw] font-helveticaMedium"> *yup my name has an aprostrophe</p>
             <p className="text-[1vw] sm:text-[0.5vw] md:text-[1vw] font-helveticaMedium"> PORTFOLIO I.</p>
           </div>
           <LoopingWords />
