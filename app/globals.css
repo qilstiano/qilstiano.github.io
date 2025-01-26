@@ -73,6 +73,17 @@
   src: url('/fonts/NeueHaasGrotesk.otf') format('opentype');
 }
 
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer-effect {
+  animation: shimmer 1.5s infinite;
+}
+
+
 /* Grid Background */
 .grid-background {
   display: grid;

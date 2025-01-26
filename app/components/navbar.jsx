@@ -26,8 +26,8 @@ function Navbar() {
     <div className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''}`}>
       <Link legacyBehavior href="/"><a className={styles.navButton}>About Me</a></Link>
       <Link legacyBehavior href="/process"><a className={styles.navButton}>My Work</a></Link>
-      <Link legacyBehavior href="/blog"><a className={styles.navButton}>Blog</a></Link>
       <Link legacyBehavior href="/contact"><a className={styles.navButton}>Contact Me</a></Link>
+      <Link legacyBehavior href="/blog"><a className={styles.navButton}>Blog</a></Link>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/navbar';
 import LoadingScreen from './components/LoadingScreen';
 import LoopingWords from './components/LoopingWords';
+import TechStackCarousel from './components/TechStack';
 import './globals.css';
 
 export default function Home() {
@@ -10,11 +11,11 @@ export default function Home() {
   const targetName = "muhammad-a'qil*";
   const [displayName, setDisplayName] = useState('');
   const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-[]{}";
-  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 }); // Track cursor position
+  const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   // Name shuffling effect with a 5-second delay
   useEffect(() => {
-    const delay = 3500; // 5-second delay
+    const delay = 3500;
     const timeout = setTimeout(() => {
       let currentIndex = 0;
       const interval = setInterval(() => {
@@ -29,18 +30,18 @@ export default function Home() {
         } else {
           clearInterval(interval);
         }
-      }, 100); // Speed of shuffling effect
+      }, 100);
 
       return () => clearInterval(interval);
     }, delay);
 
-    return () => clearTimeout(timeout); // Cleanup timeout on unmount
+    return () => clearTimeout(timeout);
   }, []);
 
   // Calculate grid size based on window dimensions
   useEffect(() => {
     const calculateGridSize = () => {
-      const cellSize = 50; // Size of each grid cell in pixels
+      const cellSize = 50;
       const rows = Math.ceil(window.innerHeight / cellSize);
       const cols = Math.ceil(window.innerWidth / cellSize);
       setGridSize({ rows, cols });
@@ -59,23 +60,20 @@ export default function Home() {
     const gridCells = document.querySelectorAll('.grid-cell');
 
     const animateRandomCells = () => {
-      if (gridCells.length === 0) return; // Skip if no grid cells are found
+      if (gridCells.length === 0) return;
 
-      const numberOfCellsToFill = 30; // Number of cells to animate at once
-      const cellsToAnimate = new Set(); // Use a Set to avoid duplicates
+      const numberOfCellsToFill = 30;
+      const cellsToAnimate = new Set();
 
-      // Select unique random cells
       while (cellsToAnimate.size < numberOfCellsToFill) {
         const randomIndex = Math.floor(Math.random() * gridCells.length);
         cellsToAnimate.add(gridCells[randomIndex]);
       }
 
-      // Apply animation to the selected cells
       cellsToAnimate.forEach((cell) => {
         cell.style.animation = 'glow 2s ease';
       });
 
-      // Reset animation after it completes
       setTimeout(() => {
         cellsToAnimate.forEach((cell) => {
           cell.style.animation = '';
@@ -83,13 +81,12 @@ export default function Home() {
       }, 2000);
     };
 
-    // Animate random cells every 500ms
     const interval = setInterval(animateRandomCells, 500);
 
     return () => {
-      clearInterval(interval); // Cleanup interval on unmount
+      clearInterval(interval);
     };
-  }, [gridSize]); // Run this effect whenever gridSize changes
+  }, [gridSize]);
 
   // Track cursor position
   useEffect(() => {
@@ -135,6 +132,25 @@ export default function Home() {
             <p className="text-md font-helveticaMedium"> PORTFOLIO I.</p>
           </div>
           <LoopingWords />
+          <div className="flex flex-row gap-2 px-2 w-full">
+            {/* Segment 1: About Me */}
+            <div className="flex-1 bg-black/10 backdrop-blur-xl rounded-lg p-6 border border-white/20">
+              <div className="flex items-start gap-4">
+                <img src="./a'qil.png" alt="Your Image" className="w-16 h-16 flex-shrink-0" />
+                <div className="flex flex-col">
+                  <p className="text-sm mb-4 font-grotesk">
+                    hello!!!!! i'm a'qil. i'm an undergraduate @ NUS CS with a keen interest in red team operations and 
+                    machine learning. i also love developing software, websites and games in my downtime and professionally. i love 
+                    cats and gaming. idk what else to say sorry
+                  </p>
+                  <a href="/about" className="text-sm text-blue-400 hover:underline">Read More →</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Segment 2: Tech Stack Carousel */}
+            <TechStackCarousel />
+          </div>
         </div>
       </div>
     </div>
