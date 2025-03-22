@@ -60,13 +60,13 @@ export default function LoopingWords() {
         <div className="looping-words__containers">
           <ul ref={wordListRef} data-looping-words-list="" className="looping-words__list">
             <li className="looping-words__list">
-              <p className="looping-words__p">SOPHOMORE @ NUS COMPUTER SCIENCE</p>
+              <p className="looping-words__p">SOPHOMORE @ NUS COMP SCI.</p>
             </li>
             <li className="looping-words__list">
-              <p className="looping-words__p">CHIEF TECHNOLOGY OFFICER @ JALAN JOURNEY</p>
+              <p className="looping-words__p">CTO @ JALAN JOURNEY</p>
             </li>
             <li className="looping-words__list">
-              <p className="looping-words__p">ASPIRING RED TEAM/PENTESTING SPECIALIST</p>
+              <p className="looping-words__p">PENTESTING SPECIALIST</p>
             </li>
             <li className="looping-words__list">
               <p className="looping-words__p">FULL-STACK DEVELOPER</p>
@@ -75,7 +75,7 @@ export default function LoopingWords() {
               <p className="looping-words__p">ASPIRING AI/ML ENGINEER</p>
             </li>
             <li className="looping-words__list">
-              <p className="looping-words__p">HOBBYIST GRAPHIC DESIGNER</p>
+              <p className="looping-words__p">GRAPHIC DESIGNER</p>
             </li>
             <li className="looping-words__list">
               <p className="looping-words__p">CAT LOVER</p>

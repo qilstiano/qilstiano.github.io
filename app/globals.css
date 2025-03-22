@@ -138,15 +138,28 @@
 }
 
 .looping-words {
-  height: 1.6em; /* Reduced height */
+  height: 1.6em;
   padding-left: 0.1em;
   padding-right: 0.1em;
-  font-size: 6vw; /* Reduced font size */
+  font-size: 6vw;
   line-height: 1.5;
   position: relative;
-  width: 100%; /* Ensure it takes full width */
+  width: 100%;
 }
 
+/* For screens smaller than 768px (typical tablet breakpoint) */
+@media screen and (max-width: 767px) {
+  .looping-words {
+    font-size: 8vw; /* Increase font size for smaller screens */
+  }
+}
+
+/* For even smaller screens, like mobile phones */
+@media screen and (max-width: 480px) {
+  .looping-words {
+    font-size: 10vw; /* Further increase font size for very small screens */
+  }
+}
 .looping-words__list {
   text-align: left; /* Flush text to the left */
   text-transform: uppercase;

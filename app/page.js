@@ -103,7 +103,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="relative w-full h-screen overflow-auto">
+    <div className="relative w-full h-screen overflow-x-hidden sm:overflow-auto">
       <LoadingScreen />
       <div id="background" className="absolute inset-0 z-0 grid-background">
         {Array.from({ length: gridSize.rows * gridSize.cols }).map((_, index) => (
@@ -122,6 +122,35 @@ export default function Home() {
       ></div>
 
       <div className="absolute inset-0 z-10 noise-texture"></div>
+
+        <div className="absolute font-garamond text-4xl whitespace-pre text-[#3471eb] hover-effect">
+          {`              
+                ++++            +++++++++++++++++++              
+            ++++++++++     ++++++++++++++++++++++++++           
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            ++++++++++++  +++++++++++++++++++++++++++++          
+              +++++++++  ++++++++++++++++++++++++++++            
+                      ++++++++++                                
+                  ++++++++++     +                               
+              ++++++++++++   +++++++++                           
+            +++++++++++++   ++++++++++++                         
+            +++++++++++++  +++++++++++++                         
+            +++++++++++++  +++++++++++++                         
+            ++++++++++++   +++++++++++++                         
+              +++++++++   ++++++++++++                           
+                +++    +++++++++++                              
+                    +++++++++                                    
+              +++++++++++++  ++++++++++++++++++++++++            
+            ++++++++++++++  +++++++++++++++++++++++++++          
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            +++++++++++++  ++++++++++++++++++++++++++++          
+            +++++++++++    ++++++++++++++++++++++++++           
+                +++++          ++++++++++++++++++++                                                               
+          `}
+        </div>
 
       {/* Content */}
       <div className="relative z-20">
