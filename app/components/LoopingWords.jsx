@@ -69,7 +69,7 @@ export default function LoopingWords() {
               <p className="looping-words__p">ASPIRING RED TEAM/PENTESTING SPECIALIST</p>
             </li>
             <li className="looping-words__list">
-              <p className="looping-words__p">FULLSTACK DEVELOPER (WEB)</p>
+              <p className="looping-words__p">FULLSTACK DEVELOPER</p>
             </li>
             <li className="looping-words__list">
               <p className="looping-words__p">ASPIRING AI/ML ENGINEER</p>
