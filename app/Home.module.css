@@ -50,8 +50,8 @@
 .largeLetters {
   padding: 10px 4px;
   position: left;
-  left: 10%;
-  top: 30%;
+  left: 50%;
+  top: 50%;
   font-size: 120%;
   color: rgba(255, 45, 25, 100);
   font-weight: bolder;

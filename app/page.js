@@ -126,17 +126,24 @@ export default function Home() {
       {/* Content */}
       <div className="relative z-20">
         <Navbar />
-        <div className="absolute inset-0 text-white flex flex-col items-start my-4">
-          <div className="px-4 rounded-md font-grotesk">
-            <p className="text-[9vw] sm:text-[8vw] md:text-[9vw]">{displayName || targetName}</p>
-            <p className="text-[1vw] sm:text-[1vw] md:text-[2vw] font-helveticaMedium"> *yup my name has an aprostrophe</p>
-            <p className="text-[1vw] sm:text-[0.5vw] md:text-[1vw] font-helveticaMedium"> PORTFOLIO I.</p>
-          </div>
-          <LoopingWords />
-          <div className="flex flex-col sm:flex-row gap-2 px-2 w-full">
-            <AboutMe/>
-            <TechStackCarousel/>
-            
+        <div className="min-h-screen flex flex-col justify-center items-center text-white">
+          <div className="text-center px-4 rounded-md max-w-full">
+            {/* Name */}
+            <p className="text-[13vw] sm:text-[8vw] md:text-[9vw] font-grotesk break-words">
+              {displayName || targetName}
+            </p>
+            {/* Subtext (commented out) */}
+            {/* <p className="text-[5vw] sm:text-[1.5vw] md:text-[1.5vw] font-helveticaMedium mt-4">
+              *yup my name has an apostrophe
+            </p> */}
+            {/* Portfolio Text (commented out) */}
+            {/* <p className="text-[4vw] sm:text-[1vw] md:text-[1vw] font-helveticaMedium mt-2">
+              PORTFOLIO I.
+            </p> */}
+            {/* LoopingWords Component */}
+            <div className="flex flex-col items-center">
+              <LoopingWords />
+            </div>
           </div>
         </div>
       </div>

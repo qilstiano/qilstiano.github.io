@@ -152,7 +152,7 @@
   text-transform: uppercase;
   white-space: nowrap;
   flex-flow: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: center; /* Align items to the left */
   margin: 0;
   padding: 0;
   font-family: PP Neue Corp, sans-serif;

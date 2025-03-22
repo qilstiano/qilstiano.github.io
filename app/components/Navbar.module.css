@@ -7,7 +7,7 @@
   top: 0;
   z-index: 48;
   margin-left: auto;
-  font-family: 'Helvetica-Neue-Roman', sans-serif;
+  font-family: 'Neue Haas Grotesk', sans-serif;
   background-size: cover;
   transition: background-color 0.3s ease;
   backdrop-filter: blur(10px);
@@ -25,12 +25,14 @@
   position: relative;
   flex: 1;
   text-align: center;
+  font-size: large;
   transition: background-color 1s ease-in-out color .15s ease-in-out;
 }
 
 .navButton:hover {
   background-color: #95ff00;
   color: black;
+  font-weight: bold;
 }
 
 /*mobile portrait (vertical screen) */
