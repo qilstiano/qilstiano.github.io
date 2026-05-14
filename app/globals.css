@@ -1,5 +1,20 @@
 /* App.css */
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@font-face {
+    font-family: 'Rindu Hujan';
+    src: url('/rindu-hujan.regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Chido';
+    src: url('/Chido.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
   margin: 0;
@@ -8,10 +23,9 @@
 }
 
 body {
-  background-color: #242323;
+  background-color: #232424;
   color: #ffffff;
   line-height: 1.5;
-  overflow: hidden;
   height: 100vh;
 }
 
@@ -42,16 +56,22 @@ body {
 }
 
 .greeting-line {
-  font-family: 'Instrument Serif', serif;
-  font-size: 3.5rem;
-  display: block;
-  color: #ffffff;
-  letter-spacing: -0.01em;
+    font-family: 'Chido',serif;
+    font-size: 3.5rem;
+    display: block;
+    color: #eabf8b;
+    letter-spacing: -0.01em;
+    transition: all 0.1s ease;
+}
+
+.greeting-line.shuffling {
+    font-family: 'Rindu Hujan', monospace;
+    letter-spacing: 0.05em;
 }
 
 /* App.css - add this new style for the inline link */
 .inline-link {
-  color: #ffffff;
+  color: #89c4f5;
   text-decoration: none;
   border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
   transition: border-color 0.2s ease;
