@@ -31,7 +31,7 @@ function App() {
                         <p>
                             hello i'm A'qil! i'm a Computer Science undergraduate from the National University of Singapore.
                             i like cybersecurity and very much prefer to be building things/contributing
-                            to projects that actually matter to people and not motivated by profits. 
+                            to projects that actually matter to people + are not motivated by profits. 
                         </p>
                         <br></br>
                         <p>
