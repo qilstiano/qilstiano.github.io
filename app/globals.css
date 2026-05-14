@@ -1,308 +1,184 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* App.css */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@font-face {
-  font-family: 'Apple Garamond';
-  src: url('/fonts/AppleGaramond.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Cloister Black';
-  src: url('/fonts/CloisterBlack.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Countdown Regular';
-  src: url('/fonts/Countdown Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Light';
-  src: url('/fonts/HelveticaNeueLight.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Medium';
-  src: url('/fonts/HelveticaNeueMedium.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Helvetica Neue Roman';
-  src: url('/fonts/HelveticaNeueRoman.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Jacquard12';
-  src: url('/fonts/Jacquard12-Regular.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Lordish';
-  src: url('/fonts/Lordish.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Nirvana';
-  src: url('/fonts/NIRVANA.TTF') format('truetype');
-}
-
-@font-face {
-  font-family: 'Dirtyline';
-  src: url('/fonts/Dirtyline.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Gotha';
-  src: url('/fonts/Dx Gotha - Free Personal.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Kregas';
-  src: url('/fonts/ncl-kregas.demo.otf') format('opentype');
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk';
-  src: url('/fonts/NeueHaasGrotesk.otf') format('opentype');
-}
-
-@keyframes shimmer {
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.shimmer-effect {
-  animation: shimmer 1.5s infinite;
-}
-
-
-/* Grid Background */
-.grid-background {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));
-  grid-template-rows: repeat(auto-fill, minmax(50px, 1fr));
-  gap: 1px; /* Gap between grid cells */
-  background: black; /* Black background */
-}
-
-/* Grid Cells */
-.grid-cell {
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent black */
-  border: 1px solid rgba(255, 255, 255, 0.1); 
-  transition: background 0.5s ease, box-shadow 0.5s ease;
-}
-
-/* Glow Animation */
-@keyframes glow {
-  0% {
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    background: rgba(255, 69, 0, 0.8); /* Orange glow */
-    box-shadow: 0 0 20px rgba(255, 69, 0, 0.8); /* Glow effect */
-  }
-  100% {
-    background: rgba(0, 0, 0, 0.8);
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
-  }
-}
-
-/* Noise Texture Overlay */
-.noise-texture {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 400 400'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  opacity: 0.2;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-
-/* ------- Looping Words ------- */
-.cloneable {
-  padding: var(--container-padding);
-  justify-content: flex-start; /* Align content to the left */
-  align-items: flex-start; /* Align content to the left */
-  min-height: auto; /* Remove full viewport height */
-  display: flex;
-  position: relative;
-}
-
-.looping-words {
-  height: 1.6em;
-  padding-left: 0.1em;
-  padding-right: 0.1em;
-  font-size: 6vw;
-  line-height: 1.5;
-  position: relative;
-  width: 100%;
-}
-
-/* For screens smaller than 768px (typical tablet breakpoint) */
-@media screen and (max-width: 767px) {
-  .looping-words {
-    font-size: 8vw; /* Increase font size for smaller screens */
-  }
-}
-
-/* For even smaller screens, like mobile phones */
-@media screen and (max-width: 480px) {
-  .looping-words {
-    font-size: 10vw; /* Further increase font size for very small screens */
-  }
-}
-.looping-words__list {
-  text-align: left; /* Flush text to the left */
-  text-transform: uppercase;
-  white-space: nowrap;
-  flex-flow: column;
-  align-items: center; /* Align items to the left */
+* {
   margin: 0;
   padding: 0;
-  font-family: PP Neue Corp, sans-serif;
-  font-weight: 700;
-  list-style: none;
-  display: flex;
-  position: relative;
-}
-
-.looping-words__list.is--primary {
-  color: var(--color-primary);
-}
-
-.looping-words__list.is--gray {
-  color: var(--color-neutral-500);
-}
-
-.looping-words__fade {
-  background-image: linear-gradient(180deg, var(--color-neutral-300) 5%, transparent 40%, transparent 60%, var(--color-neutral-300) 95%);
-  pointer-events: none;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.looping-words__fade.is--radial {
-  background-image: radial-gradient(circle closest-side at 50% 50%, transparent 64%, var(--color-neutral-400) 93%);
-  width: 140%;
-  display: block;
-  left: -20%;
-}
-
-.looping-words__selector {
-  pointer-events: none;
-  width: 100%;
-  height: 0.9em;
-  position: absolute;
-  top: 50%;
-  left: 0; /* Align selector to the left */
-  transform: translateY(-50%);
-}
-
-.looping-words__edge {
-  border-top: 0.035em solid var(--color-primary);
-  border-left: 0.035em solid var(--color-primary);
-  width: 0.125em;
-  height: 0.125em;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.looping-words__edge.is--2 {
-  left: auto;
-  right: 0;
-  transform: rotate(90deg);
-}
-
-.looping-words__edge.is--3 {
-  inset: auto 0 0 auto;
-  transform: rotate(180deg);
-}
-
-.looping-words__edge.is--4 {
-  top: auto;
-  bottom: 0;
-  transform: rotate(270deg);
-}
-
-.looping-words__containers {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-.looping-words__p {
-  margin: 0;
-}
-
-@font-face {
-  font-family: 'PP Neue Corp';
-  src: url('https://cdn.prod.website-files.com/6717aac16c9ea22eeef1e79e/6717de2d56e40b921572d2d9_PPNeueCorp-TightUltrabold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  overflow-x: hidden;
-  
+  background-color: #242323;
+  color: #ffffff;
+  line-height: 1.5;
+  overflow: hidden;
+  height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Hero Section - Full viewport height */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.greeting-wrapper {
+  margin-bottom: 2rem;
+}
+
+.greeting-line {
+  font-family: 'Instrument Serif', serif;
+  font-size: 3.5rem;
+  display: block;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* App.css - add this new style for the inline link */
+.inline-link {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+  transition: border-color 0.2s ease;
+}
+
+.inline-link:hover {
+  border-bottom-color: #ffffff;
+}
+
+.bio {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 2rem 0 2rem;
+  color: #ffffff;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 350;
+  text-align: left;
+}
+
+.social-links {
+  margin-top: 2rem;
+  font-size: 1rem;
+  font-family: 'Space Mono', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.kaypoh-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kaypoh-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.kaypoh-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.social-links a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+  transition: border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.social-links a:hover {
+  border-bottom-color: #ffffff;
+}
+
+.link-button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-family: 'Space Mono', monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.5);
+  transition: border-color 0.2s ease;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.link-button:hover {
+  border-bottom-color: #ffffff;
+}
+
+.link-separator {
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .greeting-line {
+    font-size: 2.5rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .social-links {
+    font-size: 0.85rem;
+  }
+
+  .link-button {
+    font-size: 0.85rem;
   }
 }
 
-::-webkit-scrollbar {
-  width: 6px; /* Width of the scrollbar */
+@media (max-width: 480px) {
+  .greeting-line {
+    font-size: 2rem;
+  }
 
-}
-
-::-webkit-scrollbar:hover {
-  width: 6px; /* Width of the scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: black; /* Background of the scrollbar track */
-  box-shadow: inset 0 0 5px grey;
-
-}
-
-::-webkit-scrollbar-thumb {
-  background: #ff5e00; /* Color of the scrollbar handle */
-  border-radius: 6px; /* Rounded corners for the scrollbar handle */
-  height: 6px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar handle on hover */
+  .bio {
+    font-size: 0.9rem;
+  }
 }

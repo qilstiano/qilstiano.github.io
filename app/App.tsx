@@ -2,7 +2,6 @@
 'use client';
 import React from 'react';
 import { FaGithub, FaBlog, FaFileAlt, FaEnvelope } from 'react-icons/fa';
-import './App.css';
 
 function App() {
     // Handle resume download
