@@ -42,6 +42,13 @@ function App() {
                         </p>
                         <br></br>
                         <p>
+                            recently i solo-ed the building of <a href="https://www.greenhousegames.io" target="_blank" rel="noopener noreferrer" className="inline-link">Greenhouse Games</a>, a catalogue that connects indie game developers, creators and artists with parents/children who seek
+                            a healthier version of screen time. the project was probably my deepest dive into software engineering, involving multiple services coordinating together, the use of cloud services like AWS S3 and Cloudfront, implementation of an auth system and in the future, the integration
+                            of a Stripe-based payments system. this project was extremely tough and challenging, with many sleepless nights programming, bug testing and running security reviews (as best as i could as a solo developer) and coordination with my non-technical counter parts and external coordination + user research with game developers and parents. it is by far, my proudest achievement
+                            in my tech career thus far. my biggest takeaway: software engineering is ridiculously hard but the payoff of seeing users happy with your product is unparalleled. 
+                        </p>
+                        <br></br>
+                        <p>
                             i've interned as a Security Services intern over at <a href="https://www.mufg.jp/english/index.html" target="_blank" rel="noopener noreferrer" className="inline-link">MUFG</a> and as a Founding Backend Engineer at Score Financial. 
                             these weren't ideal roles for me as, well, they basically do nothing for the masses of society but i gotta put food on my table. i'm optimistic that i'll come across some work in more
                             socially beneficial sectors/projects in the future. i did learn a lot about full-stack engineering and security though from those opportunities. win some, lose some i guess.
