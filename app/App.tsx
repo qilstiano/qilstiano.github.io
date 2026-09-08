@@ -51,7 +51,7 @@ function App() {
                         <p>
                             i've interned as a Security Services intern over at <a href="https://www.mufg.jp/english/index.html" target="_blank" rel="noopener noreferrer" className="inline-link">MUFG</a> and as a Founding Backend Engineer at Score Financial. 
                             these weren't ideal roles for me as, well, they basically do nothing for the masses of society but i gotta put food on my table. i'm optimistic that i'll come across some work in more
-                            socially beneficial sectors/projects in the future. i did learn a lot about full-stack engineering and security though from those opportunities. win some, lose some i guess.
+                            socially beneficial sectors/projects in the future. i did learn a lot about full-stack engineering and security though from those opportunities. win some, lose some i guess. currently, i'm interning at <a href="https://sg.rajahtannasia.com/" target="_blank" rel="noopener noreferrer" className="inline-link">Rajah & Tann</a> as the CISO/Cybersecurity Intern. it's okay i guess.
                         </p>
                         <br></br>
                         <p>
