@@ -6,6 +6,8 @@ const STATUS_MESSAGES = [
     'Farting...',
     'Sharting...',
     'calling ur mom...',
+    'hello yes this is ur mom',
+    'she said she loves you :)',
     'scrolling reels...',
     'Being pretentious...',
     'Ok almost there...',
@@ -24,7 +26,7 @@ export default function LoadingScreen({ onDone }: LoadingScreenProps) {
 
     useEffect(() => {
         // Quick, slightly non-linear progress. Occasional tiny stalls for
-        // character, but overall ~1.5-2s so visitors aren't kept waiting.
+        // character, but overall ~3-3.5s so visitors aren't kept waiting.
         let current = 0;
         const interval = setInterval(() => {
             const bump = Math.random() < 0.15 ? 1 : Math.random() * 14 + 6;
@@ -38,7 +40,7 @@ export default function LoadingScreen({ onDone }: LoadingScreenProps) {
                 clearInterval(interval);
                 setTimeout(onDone, 350);
             }
-        }, 130);
+        }, 230);
 
         return () => clearInterval(interval);
     }, [onDone]);
