@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 
 const STATUS_MESSAGES = [
     'Starting up...',
-    'Polishing the aqua buttons...',
-    'Rendering brushed metal...',
-    'Feeding the stray cats...',
-    'Reticulating splines...',
-    'Loading pixel dither...',
-    'Warming up the sunset...',
-    'Locating the resume (denied)...',
-    'Almost there...',
+    'Farting...',
+    'Sharting...',
+    'calling ur mom...',
+    'scrolling reels...',
+    'Being pretentious...',
+    'Ok almost there...',
+    'Fluffing resume...',
+    'Almost there bro...',
     'Welcome!',
 ];
 
@@ -52,7 +52,7 @@ export default function LoadingScreen({ onDone }: LoadingScreenProps) {
                         <span className="aqua-light aqua-light-yellow" />
                         <span className="aqua-light aqua-light-green" />
                     </span>
-                    <span className="aqua-loader-titletext">A'qil's Portfolio</span>
+                    <span className="aqua-loader-titletext">loader.js</span>
                     <span className="aqua-lights-spacer" />
                 </div>
                 <div className="aqua-loader-body">
