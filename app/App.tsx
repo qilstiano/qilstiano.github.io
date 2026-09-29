@@ -8,14 +8,14 @@ import SideAd from './SideAd';
 import Membership from './Membership';
 import DitherBanner from './DitherBanner';
 
+const BLOG_URL = 'https://peoples.prata.party';
+
 const NAV_TABS = [
     { label: 'work', color: 'tab-green' },
-    { label: 'blog', color: 'tab-purple' },
+    { label: 'blog', color: 'tab-purple', href: BLOG_URL },
     { label: 'art', color: 'tab-red' },
     { label: 'contact', color: 'tab-gold' },
 ];
-
-const BLOG_URL = 'https://peoples.prata.party';
 
 // Inline glossy pill that sits in the flow of a sentence: [logo] Name.
 // `tint` is a css class giving it a light shade of the company's colour.
@@ -101,7 +101,13 @@ function App() {
                     {/* Tab nav bar */}
                     <div className="gc-tabs">
                         {NAV_TABS.map((t) => (
-                            <a key={t.label} href="#" className={`gc-tab ${t.color}`}>
+                            <a
+                                key={t.label}
+                                href={t.href ?? '#'}
+                                target={t.href ? '_blank' : undefined}
+                                rel={t.href ? 'noopener noreferrer' : undefined}
+                                className={`gc-tab ${t.color}`}
+                            >
                                 {t.label}
                             </a>
                         ))}

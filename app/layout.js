@@ -9,7 +9,7 @@ import "@fontsource/geist-pixel/400.css";
 import "./globals.css";
 
 export const metadata = {
-  title: "brainfart.md",
+  title: "brainfartings.md",
   description: "",
   icons: {
     icon: "./brainfarts.png",

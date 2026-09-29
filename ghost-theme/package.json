@@ -1,7 +1,7 @@
 {
   "name": "brainfart",
   "description": "An early-2000s Aqua desktop themed blog theme for Ghost.",
-  "demo": "https://prata.party",
+  "demo": "https://brainfartings.com",
   "version": "2.0.0",
   "engines": {
     "ghost": ">=5.0.0"
@@ -14,7 +14,7 @@
   "author": {
     "name": "A'qil",
     "email": "qilstianooo@gmail.com",
-    "url": "https://prata.party"
+    "url": "https://brainfartings.com"
   },
   "keywords": [
     "aqua",
