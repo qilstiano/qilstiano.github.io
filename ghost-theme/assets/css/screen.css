@@ -1,0 +1,970 @@
+/* ==========================================================================
+   BRAINFART — flat ASCII / terminal two-tone Ghost theme
+   Base is monochrome (dark = white on black, light = black on white).
+   Accent = yellow in dark mode, blue in light mode.
+   ========================================================================== */
+
+/* ---------- Fonts ---------- */
+@font-face {
+    font-family: 'Geist Mono';
+    src: url('../fonts/geist-mono-400.woff2') format('woff2');
+    font-weight: 400; font-style: normal; font-display: swap;
+}
+
+:root {
+    /* Honor fonts chosen in Ghost admin (Settings -> Design -> Typography) when
+       set; otherwise fall back to the theme's monospace. */
+    --font-mono: var(--gh-font-heading, 'Geist Mono'), 'Courier New', ui-monospace, monospace;
+    --font-body: var(--gh-font-body, 'Geist Mono'), 'Courier New', ui-monospace, monospace;
+}
+
+/* ---------- Two-tone schemes ---------- */
+/* Dark (default): white on black, yellow accent. */
+:root,
+[data-theme="dark"] {
+    --bg: #000000;
+    --text: #ffffff;
+    --accent: #ff7a1a;       /* orange */
+    --accent-ink: #000000;   /* text placed on an accent fill */
+    --logo-invert: 0;        /* logo art is white -> keep as-is on dark */
+    color-scheme: dark;
+}
+/* Light: black on white, blue accent. */
+[data-theme="light"] {
+    --bg: #ffffff;
+    --text: #000000;
+    --accent: #1a1aff;
+    --accent-ink: #ffffff;
+    --logo-invert: 1;        /* invert white logo -> black on white */
+    color-scheme: light;
+}
+
+/* Ghost Sodo Search reads these variables for its modal (highlight color,
+   active tab background, and font). Point them at the theme accent + mono font
+   so the popup matches. Ghost also uses the site accent color set in admin. */
+:root {
+    --ts-highlight: var(--accent);
+    --ts-tab-active-bg: var(--accent);
+    --ts-font: var(--font-mono);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--bg); }
+
+body {
+    background: transparent;
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    font-family: var(--font-body);
+    font-size: 15px;
+    -webkit-font-smoothing: none;
+    text-rendering: optimizeLegibility;
+}
+a { color: inherit; }
+img { max-width: 100%; }
+
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+/* ---------- Static disco background ---------- */
+/* A fixed B&W photo behind everything. A horizontal-band mask hides the center
+   column (35%-65% of width) so only the outer left/right edges show; low
+   opacity keeps it from being jarring. */
+body::before {
+    content: '';
+    position: fixed;
+    inset: -8% 0;             /* extra vertical room for the parallax shift */
+    z-index: -1;              /* behind all content, above html bg */
+    pointer-events: none;
+    background: url('../images/disco_bg.jpg') center center / cover no-repeat;
+    opacity: var(--bg-opacity, 0.2);
+    filter: invert(var(--bg-invert, 0)) grayscale(1) contrast(1.05);
+    /* Parallax offset + slight zoom, driven by JS via --bg-shift. */
+    transform: translateY(var(--bg-shift, 0px)) scale(1.12);
+    transform-origin: center center;
+    will-change: transform;
+    /* Fade out toward the center horizontally: opaque at the left/right edges,
+       transparent between 35% and 65% of the width. */
+    -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 20%,
+        transparent 35%,
+        transparent 65%,
+        black 80%,
+        black 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 20%,
+        transparent 35%,
+        transparent 65%,
+        black 80%,
+        black 100%
+    );
+}
+/* Dark: photo is dark -> invert to light so it reads on black. */
+[data-theme="dark"] { --bg-invert: 1; --bg-opacity: 0.22; }
+/* Light: keep photo dark so it reads on white. */
+[data-theme="light"] { --bg-invert: 0; --bg-opacity: 0.14; }
+
+/* ---------- Full-screen frame ---------- */
+.gc-desktop {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    display: block;
+}
+/* Transparent so the edge photo shows through the page margins; content
+   panels below still paint their own --bg where legibility matters. */
+.win98 {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+/* ---------- Centered content width ---------- */
+:root { --wrap: 900px; }
+.gc-container,
+.gc-titlebar-in,
+.gc-menubar-in {
+    width: 100%;
+    max-width: var(--wrap);
+    margin: 0 auto;
+}
+
+/* ---------- Title bar (flat) ---------- */
+.win98-titlebar {
+    background: transparent;
+    color: var(--text);
+    padding: 14px 20px;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 14px;
+    border-bottom: 1px solid var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gc-titlebar-in {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.win98-title {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text);
+    margin-right: auto;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.win98-title:hover { color: var(--accent); }
+
+/* p3 image logo — white art; invert to black in light mode */
+.gc-logo { display: inline-flex; align-items: center; text-decoration: none; padding: 0; }
+.gc-logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+    image-rendering: auto;
+    filter: invert(var(--logo-invert));
+}
+.gc-logo:hover .gc-logo-img { opacity: 0.75; }
+
+/* Title-bar action icons */
+.win98-titlebar-actions { display: flex; align-items: center; gap: 10px; }
+.gc-iconbtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; height: 30px;
+    border: 1px solid var(--text);
+    border-radius: 0;
+    background: var(--bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: none;
+}
+.gc-iconbtn:hover { background: var(--text); color: var(--bg); }
+.gc-iconbtn:active { background: var(--accent); color: var(--accent-ink); }
+.gc-icon-sun, .gc-icon-moon { display: none; }
+[data-theme="dark"] .gc-icon-sun { display: block; }
+[data-theme="light"] .gc-icon-moon { display: block; }
+
+/* ---------- Menubar ---------- */
+.win98-menubar {
+    padding: 10px 20px;
+    background: transparent;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+    border-bottom: 1px solid var(--text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gc-menubar-in { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+.win98-menubar a { color: var(--text); text-decoration: none; }
+.win98-menubar a:hover { color: var(--accent); }
+
+.win98-inner {
+    background: transparent;
+    flex: 1;
+    padding: 0 20px 40px;
+    overflow: visible;
+}
+/* Content now lives in .gc-container; drop the old per-section side margins so
+   everything aligns to the centered column edges. */
+.gc-container .gc-section,
+.gc-container .gc-hero,
+.gc-container .gc-author,
+.gc-container .gc-subscribe { margin-left: 0; margin-right: 0; }
+.gc-container .gc-rule,
+.gc-container .gc-main-header,
+.gc-container .gc-searchbar,
+.gc-container .gc-card-grid,
+.gc-container .gc-tagcloud,
+.gc-container .gc-pagination,
+.gc-container .gc-content,
+.gc-container .gc-article-header,
+.gc-container .gc-footer { padding-left: 0; padding-right: 0; }
+.gc-layout { padding: 0; }
+
+/* ---------- ASCII divider helper ---------- */
+/* Thin animated dither divider — a short strip of the same accent-driven
+   dither used on the subscribe banner. */
+.gc-rule {
+    height: 5px;
+    margin: 20px 0;
+    overflow: hidden;
+    background: var(--bg);
+    user-select: none;
+}
+.gc-rule .dither-canvas-line {
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* ---------- Headings: inverted highlight bar (selected-text look) ---------- */
+.gc-section {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--text);
+    color: var(--bg);
+    padding: 3px 10px;
+    margin: 22px 20px 14px;
+    line-height: 1.4;
+}
+
+/* ---------- Tab nav (flat text links) ---------- */
+.gc-tabs {
+    display: flex;
+    gap: 28px;
+    padding: 20px 20px 4px;
+    flex-wrap: wrap;
+}
+.gc-tab {
+    text-decoration: none;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 2px 0;
+    border: none;
+    background: none;
+    min-width: 0;
+    box-shadow: none;
+}
+.gc-tab::before { content: none; }
+.gc-tab:hover { background: var(--accent); color: var(--accent-ink); }
+.gc-tab.active { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- Search bar ---------- */
+.gc-searchbar { padding: 16px 0 6px; }
+.gc-search-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--text);
+    border-radius: 0;
+    padding: 12px 16px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    cursor: pointer;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gc-search-field span { flex: 1; }
+.gc-search-field::after {
+    content: "[ / ]";
+    color: var(--accent);
+    font-size: 12px;
+    flex-shrink: 0;
+}
+.gc-search-field:hover { background: var(--text); color: var(--bg); }
+.gc-search-field:hover svg,
+.gc-search-field:hover::after { color: var(--bg); }
+.gc-search-field svg { flex-shrink: 0; color: var(--accent); }
+
+/* ---------- Layout ---------- */
+.gc-layout { padding: 0 20px; }
+.gc-main { width: 100%; }
+
+/* Panels are just spacing now — no cards/borders around the whole box */
+.gc-box { background: transparent; border: none; border-radius: 0; box-shadow: none; margin-bottom: 8px; overflow: visible; }
+.gc-main-header { padding: 16px 20px 0; }
+.gc-filepath {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gc-link { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.gc-link:hover { background: var(--accent); color: var(--accent-ink); text-decoration: none; }
+
+/* ==========================================================================
+   HIGHLIGHT / hero (most recent post)
+   ========================================================================== */
+.gc-hero {
+    display: block;
+    margin: 4px 0 8px;
+    padding: 16px 0 20px;
+    border-bottom: 1px solid var(--text);
+    text-decoration: none;
+    color: var(--text);
+}
+.gc-hero.has-media { display: grid; grid-template-columns: 240px 1fr; gap: 20px; align-items: start; }
+.gc-hero-media {
+    border: 1px solid var(--text);
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    background: var(--bg);
+}
+.gc-hero-media img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1) contrast(1.1);
+    transition: filter 0.15s ease;
+}
+.gc-hero:hover .gc-hero-media img { filter: none; }
+.gc-hero-body { display: flex; flex-direction: column; gap: 10px; }
+.gc-hero-badge {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    padding: 2px 8px;
+}
+.gc-hero-title {
+    font-family: var(--font-mono);
+    font-size: 1.8rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+}
+.gc-hero:hover .gc-hero-title { color: var(--accent); }
+.gc-hero-excerpt { font-size: 14px; line-height: 1.6; color: var(--text); max-width: 70ch; }
+
+/* ==========================================================================
+   Post list — ASCII rows, not cards
+   ========================================================================== */
+.gc-card-grid { display: block; padding: 4px 0 8px; }
+.gc-card {
+    border-bottom: 1px dotted var(--text);
+    background: none;
+}
+/* Clickable header row (the whole title line) */
+.gc-card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    width: 100%;
+    padding: 12px 8px;
+    margin: 0;
+    border: none;
+    background: none;
+    color: var(--text);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+.gc-card-head::before {
+    content: ">";
+    color: var(--accent);
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+.gc-card-head:hover,
+.gc-card.is-open .gc-card-head { background: var(--accent); color: var(--accent-ink); }
+.gc-card-head:hover::before,
+.gc-card.is-open .gc-card-head::before { color: var(--accent-ink); }
+.gc-card-head:hover .gc-card-tag,
+.gc-card-head:hover .gc-card-meta,
+.gc-card.is-open .gc-card-tag,
+.gc-card.is-open .gc-card-meta { color: var(--accent-ink); }
+
+.gc-card-body { display: flex; flex-direction: column; gap: 3px; flex: 1; padding: 0; }
+.gc-card-hasmedia { color: var(--accent); }
+.gc-card-head:hover .gc-card-hasmedia,
+.gc-card.is-open .gc-card-hasmedia { color: var(--accent-ink); }
+
+.gc-card-tag {
+    align-self: flex-start;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    background: none;
+    border: none;
+    padding: 0;
+}
+.gc-card-title {
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: inherit;
+}
+.gc-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-wrap: wrap;
+    opacity: 0.8;
+}
+.gc-card-featured {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-ink);
+    background: var(--accent);
+    padding: 1px 7px;
+}
+
+/* ---- Preview panel: collapsed, revealed on hover (desktop) or .is-open (tap) ---- */
+.gc-card-preview {
+    display: grid;
+    grid-template-rows: 0fr;
+    overflow: hidden;
+    transition: grid-template-rows 0.2s ease;
+}
+.gc-card-preview-in {
+    min-height: 0;
+    opacity: 0;
+    padding: 0 8px;
+    transition: opacity 0.18s ease, padding 0.2s ease;
+}
+@media (hover: hover) {
+    .gc-card:hover .gc-card-preview { grid-template-rows: 1fr; }
+    .gc-card:hover .gc-card-preview-in { opacity: 1; padding: 12px 8px 14px; }
+}
+.gc-card.is-open .gc-card-preview { grid-template-rows: 1fr; }
+.gc-card.is-open .gc-card-preview-in { opacity: 1; padding: 12px 8px 14px; }
+
+.gc-card-preview-img {
+    display: block;
+    max-width: 260px;
+    width: 100%;
+    border: 1px solid var(--text);
+    margin-bottom: 10px;
+    filter: grayscale(1) contrast(1.05);
+}
+.gc-card-preview-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text);
+    max-width: 70ch;
+    margin-bottom: 12px;
+}
+.gc-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 7px 14px;
+    text-decoration: none;
+}
+.gc-card-cta:hover { background: var(--bg); color: var(--accent); }
+.gc-card-cta svg { flex-shrink: 0; }
+
+/* ==========================================================================
+   Single post / page
+   ========================================================================== */
+.gc-article { padding: 0 0 6px; }
+.gc-article-header { padding: 18px 20px 4px; }
+.gc-article-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-ink);
+    background: var(--accent);
+    border: none;
+    border-radius: 0;
+    padding: 2px 8px;
+    text-decoration: none;
+    margin-bottom: 12px;
+}
+.gc-article-title {
+    font-family: var(--font-mono);
+    font-size: 2rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 10px;
+}
+.gc-article-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+.gc-article-meta img { width: 22px; height: 22px; border-radius: 0; object-fit: cover; border: 1px solid var(--text); }
+
+/* ---------- Reading progress bar ---------- */
+.gc-progress {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 90000;
+    pointer-events: none;
+}
+.gc-progress-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--accent);
+}
+.gc-progress-pct {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ---------- Auto table of contents ---------- */
+.gc-toc {
+    margin: 4px 0 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--text);
+}
+.gc-toc-title {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 8px;
+}
+.gc-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 2px; }
+.gc-toc-item.lvl-h3 { padding-left: 18px; }
+.gc-toc-item.lvl-h3 .gc-toc-link::before { content: "- "; color: var(--accent); }
+.gc-toc-link {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 2px 4px;
+}
+.gc-toc-link:hover { background: var(--accent); color: var(--accent-ink); }
+.gc-toc-link.active { background: var(--text); color: var(--bg); }
+.gc-toc-link.active::before { color: var(--bg); }
+
+/* ---------- Sticky right-side TOC (wide screens only) ---------- */
+.gc-toc-sticky { display: none; }
+
+@media (min-width: 1180px) {
+    .gc-toc-sticky {
+        display: block;
+        position: fixed;
+        top: 96px;
+        /* Sits in the gutter to the right of the centered --wrap column. */
+        left: calc(50% + (var(--wrap) / 2) + 28px);
+        width: 220px;
+        max-height: 70vh;
+        overflow-y: auto;
+        padding: 12px 14px;
+        border: 1px solid var(--text);
+        background: var(--bg);
+        z-index: 800;
+
+        /* Hidden until revealed; the reveal is a pixelated dissolve. */
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(6px);
+        /* Blocky, stepped fade so it resolves in chunks rather than smoothly. */
+        filter: blur(6px) contrast(1.4);
+        transition:
+            opacity 0.32s steps(6, end),
+            filter 0.32s steps(6, end),
+            transform 0.32s steps(6, end),
+            visibility 0s linear 0.32s;
+    }
+    .gc-toc-sticky.is-visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
+        filter: blur(0) contrast(1);
+        transition:
+            opacity 0.34s steps(6, end),
+            filter 0.34s steps(6, end),
+            transform 0.34s steps(6, end),
+            visibility 0s linear 0s;
+    }
+    /* On very wide screens, nudge it further out so it never overlaps text. */
+    .gc-toc-sticky .gc-toc-title { margin-bottom: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .gc-toc-sticky { transition: opacity 0.2s linear, visibility 0s; filter: none; transform: none; }
+    .gc-toc-sticky.is-visible { filter: none; transform: none; }
+}
+
+.gc-feature-image {
+    display: block;
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-top: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+    margin: 14px 0;
+}
+.gc-content {
+    padding: 8px 20px 20px;
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.75;
+    max-width: 78ch;
+}
+.gc-content > * + * { margin-top: 1.1em; }
+.gc-content h1, .gc-content h2, .gc-content h3, .gc-content h4 {
+    font-family: var(--font-mono);
+    color: var(--text);
+    line-height: 1.3;
+    margin-top: 1.6em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.gc-content h2 { font-size: 1.4rem; }
+.gc-content h3 { font-size: 1.15rem; }
+.gc-content a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+.gc-content a:hover { background: var(--accent); color: var(--accent-ink); text-decoration: none; }
+.gc-content img { border-radius: 0; border: 1px solid var(--text); }
+.gc-content figure { margin: 1.4em 0; }
+.gc-content figcaption { text-align: left; font-size: 12px; color: var(--accent); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.gc-content blockquote {
+    border-left: none;
+    background: none;
+    padding: 0 0 0 20px;
+    color: var(--text);
+    position: relative;
+}
+.gc-content blockquote::before { content: ">"; position: absolute; left: 0; color: var(--accent); }
+.gc-content pre {
+    background: var(--bg);
+    color: var(--text);
+    padding: 14px 16px;
+    border: 1px solid var(--text);
+    border-radius: 0;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.55;
+}
+.gc-content code {
+    font-family: var(--font-mono);
+    font-size: 0.92em;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    color: var(--accent);
+}
+.gc-content pre code { color: var(--text); }
+.gc-content ul, .gc-content ol { padding-left: 1.4em; }
+.gc-content ul { list-style: none; }
+.gc-content ul li::before { content: "- "; color: var(--accent); }
+.gc-content hr { border: none; border-top: 1px solid var(--text); }
+.gc-content :is(.kg-width-wide, .kg-card.kg-width-wide) {
+    margin-left: -10px; margin-right: -10px; max-width: none; width: calc(100% + 20px);
+}
+.gc-content :is(.kg-width-full, .kg-card.kg-width-full) {
+    margin-left: -20px; margin-right: -20px; max-width: none; width: calc(100% + 40px);
+}
+.gc-content .kg-width-full img { border-left: none; border-right: none; }
+.gc-content table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.gc-content th, .gc-content td { border: 1px solid var(--text); padding: 8px 10px; text-align: left; }
+.gc-content th { background: var(--text); color: var(--bg); text-transform: uppercase; letter-spacing: 1px; }
+
+.gc-author {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin: 8px 20px 16px;
+    padding: 14px 0;
+    background: none;
+    border: none;
+    border-top: 1px solid var(--text);
+    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+}
+.gc-author img { width: 48px; height: 48px; border-radius: 0; object-fit: cover; border: 1px solid var(--text); flex-shrink: 0; }
+.gc-author-name { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 1px; color: var(--text); }
+.gc-author-bio { font-size: 13px; color: var(--text); line-height: 1.5; opacity: 0.85; }
+
+/* ---------- Pagination ---------- */
+.gc-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 20px 20px;
+}
+.gc-page-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--bg);
+    border: 1px solid var(--text);
+    border-radius: 0;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 7px 16px;
+    text-decoration: none;
+}
+.gc-page-btn:hover { background: var(--accent); color: var(--accent-ink); }
+.gc-page-info { font-family: var(--font-mono); font-size: 12px; color: var(--text); text-transform: uppercase; letter-spacing: 1px; opacity: 0.8; }
+
+/* ---------- Buttons ---------- */
+.gc-social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--bg);
+    border: 1px solid var(--text);
+    border-radius: 0;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 9px 16px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.gc-social-btn:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* Footer */
+.gc-footer {
+    color: var(--text);
+    font-size: 11px;
+    padding: 20px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid var(--text);
+    opacity: 0.8;
+}
+.gc-footer a { color: var(--accent); text-decoration: none; }
+.gc-footer a:hover { background: var(--accent); color: var(--accent-ink); }
+
+/* ==========================================================================
+   SUBSCRIBE — animated accent dither behind a solid text backing
+   ========================================================================== */
+.gc-subscribe {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--text);
+    border-radius: 0;
+    margin: 8px 0 20px;
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 20px;
+    background: var(--bg);
+}
+.gc-subscribe .dither-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    cursor: crosshair;
+    z-index: 1;
+}
+/* Rectangular backing so the copy stays legible over the animation. */
+.gc-subscribe-inner {
+    position: relative;
+    z-index: 2;
+    text-align: left;
+    padding: 22px 22px;
+    max-width: 560px;
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--accent);
+    box-shadow: 6px 6px 0 var(--accent);
+}
+.gc-subscribe-title {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    color: var(--text);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+.gc-subscribe-title::before { content: "* "; color: var(--accent); }
+.gc-subscribe-title::after { content: " *"; color: var(--accent); }
+.gc-subscribe-sub { color: var(--text); font-size: 13px; line-height: 1.5; margin-bottom: 14px; opacity: 0.9; }
+.gc-subscribe-form { display: flex; gap: 10px; flex-wrap: wrap; }
+.gc-subscribe-input {
+    flex: 1 1 220px;
+    max-width: 320px;
+    border: 1px solid var(--text);
+    border-radius: 0;
+    padding: 10px 12px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    background: var(--bg);
+    color: var(--text);
+}
+.gc-subscribe-input::placeholder { color: var(--text); opacity: 0.5; }
+.gc-subscribe-input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+.gc-subscribe-btn {
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--text);
+    border-radius: 0;
+    padding: 10px 20px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.gc-subscribe-btn:hover { background: var(--accent); color: var(--accent-ink); }
+.gc-subscribe-note { color: var(--text); font-size: 10px; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; }
+
+/* ==========================================================================
+   ERROR page
+   ========================================================================== */
+.gc-error { text-align: left; padding: 40px 20px; }
+.gc-error-code { font-family: var(--font-mono); font-size: 3rem; color: var(--accent); letter-spacing: 2px; }
+.gc-error-msg { color: var(--text); margin: 10px 0 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 640px) {
+    body { font-size: 14px; }
+    .gc-tabs { gap: 16px; }
+    .gc-article-title { font-size: 1.5rem; }
+    .gc-hero-title { font-size: 1.4rem; }
+    .gc-content { font-size: 14px; }
+    .win98-title { display: none; }
+    .gc-hero.has-media { grid-template-columns: 1fr; }
+    /* On mobile the content fills nearly the full width, so drop the band
+       entirely and let the photo show evenly full-width. */
+    body::before {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .gc-card-preview,
+    .gc-hero-media img { transition: none; }
+}
+
+/* ==========================================================================
+   TAG CLOUD (tags section)
+   ========================================================================== */
+.gc-tagcloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 4px 0 8px;
+}
+.gc-tagchip {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--text);
+    padding: 4px 10px;
+    text-decoration: none;
+}
+.gc-tagchip:hover { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.gc-tagchip-count { color: var(--accent); }
+.gc-tagchip:hover .gc-tagchip-count { color: var(--accent-ink); }
+
+/* ==========================================================================
+   Ghost Portal — hide the default floating "Subscribe" pill so the theme's
+   own ASCII subscribe block is the only CTA. (Comment out to restore it.)
+   ========================================================================== */
+.gh-portal-triggerbtn-wrapper,
+[data-portal="trigger-button"],
+iframe[title="portal-trigger"] { display: none !important; }

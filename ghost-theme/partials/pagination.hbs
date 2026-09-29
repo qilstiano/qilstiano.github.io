@@ -1,0 +1,15 @@
+{{#if pagination.total}}
+<nav class="gc-pagination" role="navigation">
+    {{#if pagination.prev}}
+        <a class="gc-page-btn" href="{{page_url pagination.prev}}">&#8592; newer</a>
+    {{else}}
+        <span></span>
+    {{/if}}
+    <span class="gc-page-info">page {{pagination.page}} of {{pagination.pages}}</span>
+    {{#if pagination.next}}
+        <a class="gc-page-btn" href="{{page_url pagination.next}}">older &#8594;</a>
+    {{else}}
+        <span></span>
+    {{/if}}
+</nav>
+{{/if}}

@@ -1,0 +1,76 @@
+{{!< default}}
+
+{{#post}}
+{{!-- Reading progress bar (fixed at the very top of the viewport) --}}
+<div class="gc-progress" aria-hidden="true"><span class="gc-progress-bar" data-reading-progress></span></div>
+
+{{!-- Sticky right-side TOC (wide screens); JS clones the inline TOC into it
+      and reveals it once you scroll past the inline one. --}}
+<nav class="gc-toc-sticky" data-toc-sticky hidden aria-label="Table of contents"></nav>
+
+<div class="gc-layout gc-layout-full">
+    <main class="gc-main">
+        <article class="gc-box gc-article {{post_class}}">
+            <div class="gc-main-header">
+                <span class="gc-filepath">root / posts / {{slug}}.md</span>
+                <span class="gc-progress-pct" data-reading-pct>0%</span>
+            </div>
+
+            {{!-- Auto table of contents; JS fills it from the article's headings. --}}
+            <nav class="gc-toc" data-toc hidden aria-label="Table of contents">
+                <div class="gc-toc-title">// contents</div>
+                <ul class="gc-toc-list" data-toc-list></ul>
+            </nav>
+
+            <header class="gc-article-header">
+                {{#primary_tag}}
+                    <a class="gc-article-tag" href="{{url}}">{{name}}</a>
+                {{/primary_tag}}
+                <h1 class="gc-article-title">{{title}}</h1>
+                <div class="gc-article-meta">
+                    {{#primary_author}}
+                        {{#if profile_image}}<img src="{{img_url profile_image size="xs"}}" alt="{{name}}" />{{/if}}
+                        <span>{{name}}</span>
+                    {{/primary_author}}
+                    <span>&bull;</span>
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                    <span>&bull;</span>
+                    <span>{{reading_time}}</span>
+                </div>
+            </header>
+
+            {{#if feature_image}}
+                <img class="gc-feature-image" src="{{img_url feature_image size="xl"}}" alt="{{title}}" />
+            {{/if}}
+
+            <section class="gc-content">
+                {{content}}
+            </section>
+
+            {{#primary_author}}
+                <div class="gc-author">
+                    {{#if profile_image}}<img src="{{img_url profile_image size="s"}}" alt="{{name}}" />{{/if}}
+                    <div>
+                        <div class="gc-author-name">{{name}}</div>
+                        {{#if bio}}<div class="gc-author-bio">{{bio}}</div>{{/if}}
+                    </div>
+                </div>
+            {{/primary_author}}
+        </article>
+
+        {{! Members comments, if enabled in Ghost admin }}
+        {{#if @labs.comments}}
+            <div class="gc-box" style="padding:14px 18px;">
+                {{comments title="responses"}}
+            </div>
+        {{/if}}
+
+        {{> "subscribe"}}
+
+        <div class="gc-footer">
+            &copy; {{date format="YYYY"}} {{@site.title}} &nbsp;&bull;&nbsp;
+            <a href="{{@site.url}}">&#8592; back home</a>
+        </div>
+    </main>
+</div>
+{{/post}}

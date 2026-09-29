@@ -1,0 +1,32 @@
+{{!-- A post as an ASCII list row. On hover (desktop) or tap (touch) a preview
+      panel reveals the excerpt, an optional thumbnail, and a continue-reading
+      button. --}}
+<article class="gc-card{{#if feature_image}} has-media{{/if}}" data-card data-card-url="{{url}}">
+    <button class="gc-card-head" type="button" data-card-toggle aria-expanded="false">
+        <span class="gc-card-body">
+            <span class="gc-card-title">{{title}}</span>
+            <span class="gc-card-meta">
+                {{#primary_tag}}<span class="gc-card-tag">{{name}}</span>{{/primary_tag}}
+                {{#if featured}}<span class="gc-card-featured">&#9733; featured</span>{{/if}}
+                <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                <span>&bull;</span>
+                <span>{{reading_time}}</span>
+                {{#if feature_image}}<span class="gc-card-hasmedia">[img]</span>{{/if}}
+            </span>
+        </span>
+    </button>
+
+    {{!-- Hover / tap preview --}}
+    <div class="gc-card-preview">
+        <div class="gc-card-preview-in">
+            {{#if feature_image}}
+                <img class="gc-card-preview-img" src="{{img_url feature_image size="s"}}" alt="" loading="lazy" />
+            {{/if}}
+            <p class="gc-card-preview-text">{{excerpt words="34"}}</p>
+            <a class="gc-card-cta" href="{{url}}">
+                continue reading
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="8 7 17 7 17 16"></polyline></svg>
+            </a>
+        </div>
+    </div>
+</article>

@@ -1,0 +1,21 @@
+{{!-- Highlighted most-recent post. Text-first with an optional framed
+      thumbnail; the whole block lifts/inverts on hover. --}}
+<a class="gc-hero{{#if feature_image}} has-media{{/if}} {{post_class}}" href="{{url}}">
+    {{#if feature_image}}
+        <div class="gc-hero-media">
+            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" />
+        </div>
+    {{/if}}
+    <div class="gc-hero-body">
+        <span class="gc-hero-badge">&#9733; latest</span>
+        {{#primary_tag}}<span class="gc-card-tag">{{name}}</span>{{/primary_tag}}
+        <h2 class="gc-hero-title">{{title}}</h2>
+        <p class="gc-hero-excerpt">{{excerpt words="40"}}</p>
+        <div class="gc-card-meta">
+            {{#primary_author}}<span>{{name}}</span><span>&bull;</span>{{/primary_author}}
+            <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+            <span>&bull;</span>
+            <span>{{reading_time}}</span>
+        </div>
+    </div>
+</a>

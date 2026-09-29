@@ -1,0 +1,37 @@
+{
+  "name": "brainfart",
+  "description": "An early-2000s Aqua desktop themed blog theme for Ghost.",
+  "demo": "https://prata.party",
+  "version": "2.0.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "screenshots": {
+    "desktop": "assets/screenshot-desktop.png",
+    "mobile": "assets/screenshot-mobile.png"
+  },
+  "author": {
+    "name": "A'qil",
+    "email": "qilstianooo@gmail.com",
+    "url": "https://prata.party"
+  },
+  "keywords": [
+    "aqua",
+    "retro",
+    "y2k",
+    "blog",
+    "ghost-theme"
+  ],
+  "config": {
+    "posts_per_page": 9,
+    "image_sizes": {
+      "xs": { "width": 150 },
+      "s": { "width": 400 },
+      "m": { "width": 750 },
+      "l": { "width": 960 },
+      "xl": { "width": 1600 }
+    },
+    "card_assets": true
+  }
+}

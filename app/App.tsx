@@ -15,7 +15,7 @@ const NAV_TABS = [
     { label: 'contact', color: 'tab-gold' },
 ];
 
-const BLOG_URL = 'https://prata.party';
+const BLOG_URL = 'https://peoples.prata.party';
 
 // Inline glossy pill that sits in the flow of a sentence: [logo] Name.
 // `tint` is a css class giving it a light shade of the company's colour.
@@ -228,7 +228,7 @@ function App() {
             <div className="win98-taskbar">
                 <button className="win98-start">
                     <img src="/brainfarts.png" alt="" className="win98-start-icon" />
-                    Start
+                    OS
                 </button>
                 <div className="win98-task"><FaGlobe className="gc-btn-icon" /> A'qil's Portfolio</div>
                 <div className="win98-tray">

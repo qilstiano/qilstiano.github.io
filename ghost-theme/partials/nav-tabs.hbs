@@ -1,0 +1,11 @@
+{{!-- Flat text tab nav from the site's primary (and secondary) navigation. --}}
+{{#if navigation}}
+<div class="gc-tabs">
+    {{#foreach navigation}}
+        <a href="{{url}}" class="gc-tab{{#if current}} active{{/if}}">{{label}}</a>
+    {{/foreach}}
+    {{#foreach secondary_navigation}}
+        <a href="{{url}}" class="gc-tab{{#if current}} active{{/if}}">{{label}}</a>
+    {{/foreach}}
+</div>
+{{/if}}

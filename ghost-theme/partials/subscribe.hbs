@@ -1,0 +1,18 @@
+{{!-- Subscribe CTA over an animated, accent-colored dither. Text sits on a
+      solid rectangular backing for readability. Logged-out visitors only. --}}
+{{#unless @member}}
+<section class="gc-subscribe" id="subscribe">
+    <canvas class="dither-canvas" aria-hidden="true"></canvas>
+    <div class="gc-subscribe-inner">
+        <div class="gc-subscribe-title">subscribe</div>
+        <p class="gc-subscribe-sub">
+            {{#if @site.description}}{{@site.description}}{{else}}new posts, straight to your inbox. no spam, ever.{{/if}}
+        </p>
+        <form class="gc-subscribe-form" data-members-form="subscribe">
+            <input class="gc-subscribe-input" data-members-email type="email" required placeholder="you@example.com" autocomplete="email" aria-label="Email address" />
+            <button class="gc-subscribe-btn" type="submit">sign me up</button>
+        </form>
+
+    </div>
+</section>
+{{/unless}}

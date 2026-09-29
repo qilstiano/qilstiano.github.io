@@ -1,0 +1,12 @@
+{{!-- Tag index: all public tags as ASCII chips. --}}
+{{#get "tags" limit="50" filter="visibility:public" include="count.posts" order="count.posts desc" as |tags|}}
+    {{#if tags}}
+        {{> "dither-line"}}
+        <h2 class="gc-section">tags</h2>
+        <div class="gc-tagcloud">
+            {{#foreach tags}}
+                <a class="gc-tagchip" href="{{url}}">{{name}} <span class="gc-tagchip-count">[{{count.posts}}]</span></a>
+            {{/foreach}}
+        </div>
+    {{/if}}
+{{/get}}

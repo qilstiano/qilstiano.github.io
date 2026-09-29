@@ -1,0 +1,85 @@
+{{!< default}}
+
+{{! ---------- Home / list view ---------- }}
+
+{{> "nav-tabs"}}
+
+{{! Search bar — opens Ghost's built-in search }}
+<div class="gc-searchbar">
+    <button class="gc-search-field" data-ghost-search type="button" aria-label="Search articles">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <span>search articles&hellip;</span>
+    </button>
+</div>
+
+<div class="gc-layout gc-layout-full">
+    <main class="gc-main">
+        <div class="gc-box gc-main-box">
+            <div class="gc-main-header">
+                <span class="gc-filepath">
+                    root / {{#is "tag"}}tags / {{#tag}}{{slug}}{{/tag}}{{else is "author"}}authors / {{primary_author.slug}}{{else}}posts / index.md{{/is}}
+                </span>
+            </div>
+
+            {{#is "tag"}}
+                {{#tag}}
+                    <h1 class="gc-section">{{name}}</h1>
+                    {{#if description}}<p class="gc-content">{{description}}</p>{{/if}}
+                {{/tag}}
+            {{else is "author"}}
+                <h1 class="gc-section">{{primary_author.name}}</h1>
+                {{#if primary_author.bio}}<p class="gc-content">{{primary_author.bio}}</p>{{/if}}
+            {{/is}}
+
+            {{#if posts}}
+                {{#is "index"}}
+                    {{#unless pagination.prev}}
+                        {{> "dither-line"}}
+                        {{! Highlight the most recent post as a hero. }}
+                        {{#foreach posts limit="1"}}
+                            {{> "post-hero"}}
+                        {{/foreach}}
+                        <h2 class="gc-section">more posts</h2>
+                        <div class="gc-card-grid">
+                            {{! Grid starts at the 2nd post; the 1st is the hero. }}
+                            {{#foreach posts from="2"}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        </div>
+                    {{else}}
+                        <h2 class="gc-section">posts</h2>
+                        <div class="gc-card-grid">
+                            {{#foreach posts}}
+                                {{> "post-card"}}
+                            {{/foreach}}
+                        </div>
+                    {{/unless}}
+                {{else}}
+                    <h2 class="gc-section">posts</h2>
+                    <div class="gc-card-grid">
+                        {{#foreach posts}}
+                            {{> "post-card"}}
+                        {{/foreach}}
+                    </div>
+                {{/is}}
+                {{> "pagination"}}
+            {{else}}
+                <p class="gc-content">no posts yet. check back soon.</p>
+            {{/if}}
+        </div>
+
+        {{! Tags section + subscribe, first page of the main feed only }}
+        {{#is "index"}}
+            {{#unless pagination.prev}}
+                {{> "tags-section"}}
+                {{> "dither-line"}}
+                {{> "subscribe"}}
+            {{/unless}}
+        {{/is}}
+
+        <div class="gc-footer">
+            &copy; {{date format="YYYY"}} {{@site.title}} &nbsp;&bull;&nbsp; made with a computer &nbsp;&bull;&nbsp;
+            <a href="https://ghost.org" target="_blank" rel="noopener noreferrer">powered by Ghost</a>
+        </div>
+    </main>
+</div>

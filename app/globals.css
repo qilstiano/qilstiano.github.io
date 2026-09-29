@@ -351,7 +351,7 @@ body {
     box-shadow: inset 0 1px 1px rgba(255,255,255,0.9);
 }
 .win98-start:active { background: linear-gradient(#b9d4f6, #eaf3ff); }
-.win98-start-icon { width: 16px; height: 16px; image-rendering: pixelated; }
+.win98-start-icon { width: 20px; height: 20px; }
 .win98-task {
     display: inline-flex;
     align-items: center;
