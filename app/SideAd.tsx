@@ -5,27 +5,27 @@ interface SideAdProps {
     onUpgrade: () => void;
 }
 
-// An inline sidebar ad block (like the display ads that sit alongside page
-// content). Promotes the "Premium" upgrade needed to unlock the resume.
+// An inline sidebar promo block. Named with neutral classes (promo-*) and a
+// non-ad label so content/ad blockers don't cosmetically hide it.
 export default function SideAd({ onUpgrade }: SideAdProps) {
     return (
-        <div className="sidead">
-            <div className="sidead-bar">
-                <span>Advertisement</span>
-                <span className="sidead-info">ⓘ</span>
+        <div className="promo-card">
+            <div className="promo-bar">
+                <span>A word from our sponsor</span>
+                <span className="promo-info">ⓘ</span>
             </div>
-            <div className="sidead-body">
-                <img src="/utya-flexing.gif" alt="" className="sidead-logo-gif" />
-                <div className="sidead-title">Upgrade to PREMIUM now!</div>
-                <div className="sidead-text">
+            <div className="promo-body">
+                <img src="/utya-flexing.gif" alt="" className="promo-logo-gif" />
+                <div className="promo-title">Upgrade to PREMIUM now!</div>
+                <div className="promo-text">
                     Unlock my resume and more.
                     <br />
-                    <span className="sidead-strike">$99</span> <b>from $0*</b>
+                    <span className="promo-strike">$99</span> <b>from $0*</b>
                 </div>
-                <button className="sidead-cta" onClick={onUpgrade}>
+                <button className="promo-cta" onClick={onUpgrade}>
                     Upgrade now!
                 </button>
-                <div className="sidead-foot">*Terms and conditions apply. Extra charges may apply. I may take over your bank account.</div>
+                <div className="promo-foot">*Terms and conditions apply. Extra charges may apply. I may take over your bank account.</div>
             </div>
         </div>
     );

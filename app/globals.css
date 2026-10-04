@@ -394,8 +394,8 @@ body {
 /* Pixel font (Geist Pixel) on buttons/tabs/labels */
 .gc-tab,
 .gc-social-btn,
-.sidead-title,
-.sidead-cta,
+.promo-title,
+.promo-cta,
 .mem-tier-name,
 .mem-tier-cta {
     font-family: "Geist Pixel", "Courier New", monospace;
@@ -835,7 +835,7 @@ body {
    INLINE SIDEBAR AD (Google-display-ad style, neobrutalist)
    ========================================================================== */
 .gc-sidebar { position: sticky; top: 16px; }
-.sidead {
+.promo {
     width: 100%;
     background: #fff;
     color: #111;
@@ -846,7 +846,7 @@ body {
     font-family: var(--font-body), sans-serif;
     margin-bottom: 16px;
 }
-.sidead-bar {
+.promo-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -858,24 +858,24 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-.sidead-info { color: #999; }
-.sidead-body { padding: 16px 14px 14px; text-align: center; }
-.sidead-logo {
+.promo-info { color: #999; }
+.promo-body { padding: 16px 14px 14px; text-align: center; }
+.promo-logo {
     font-size: 2rem;
     color: #4d6cff;
     line-height: 1;
     margin-bottom: 8px;
 }
-.sidead-logo-gif {
+.promo-logo-gif {
     display: block;
     width: 100px;
     height: auto;
     margin: 0 auto 8px;
 }
-.sidead-title { font-size: 10px; color: #111; margin-bottom: 8px; line-height: 1.5; }
-.sidead-text { font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 12px; font-weight: bold;}
-.sidead-strike { text-decoration: line-through; color: #aaa; }
-.sidead-cta {
+.promo-title { font-size: 10px; color: #111; margin-bottom: 8px; line-height: 1.5; }
+.promo-text { font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 12px; font-weight: bold;}
+.promo-strike { text-decoration: line-through; color: #aaa; }
+.promo-cta {
     position: relative;
     overflow: hidden;
     display: block;
@@ -892,7 +892,7 @@ body {
     transition: filter 0.12s ease, transform 0.06s ease;
 }
 /* Looping diagonal shimmer sweep */
-.sidead-cta::after {
+.promo-cta::after {
     content: '';
     position: absolute;
     top: 0;
@@ -907,19 +907,19 @@ body {
     );
     transform: skewX(-20deg);
     pointer-events: none;
-    animation: sidead-shimmer 6s ease-in-out infinite;
+    animation: promo-shimmer 6s ease-in-out infinite;
 }
-@keyframes sidead-shimmer {
+@keyframes promo-shimmer {
     0%   { left: -60%; }
     60%  { left: 130%; }
     100% { left: 130%; }
 }
-.sidead-cta:hover { filter: brightness(1.06); }
-.sidead-cta:active { transform: translateY(1px); }
+.promo-cta:hover { filter: brightness(1.06); }
+.promo-cta:active { transform: translateY(1px); }
 @media (prefers-reduced-motion: reduce) {
-    .sidead-cta::after { animation: none; opacity: 0; }
+    .promo-cta::after { animation: none; opacity: 0; }
 }
-.sidead-foot { font-size: 9px; color: #999; margin-top: 8px; }
+.promo-foot { font-size: 9px; color: #999; margin-top: 8px; }
 
 /* Sidebar badge strip (retains a little 2000s iconography) */
 .gc-badge-strip {
@@ -1138,7 +1138,7 @@ body {
     .gc-layout { grid-template-columns: 1fr; }
     .mem-tiers { grid-template-columns: 1fr; }
     .mem-tier-best { transform: none; }
-    .sidead { top: auto; bottom: 48px; }
+    .promo { top: auto; bottom: 48px; }
 }
 @media (max-width: 640px) {
     .gc-desktop { padding: 8px 8px 48px; }
